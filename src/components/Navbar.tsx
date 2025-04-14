@@ -52,6 +52,12 @@ export default function Navbar() {
           <Link href="/webinars" className="hover:text-blue-600">
             Webinars
           </Link>
+          <Link href="/services" className="hover:text-blue-600">
+            Services
+          </Link>
+          <Link href="/contactus" className="hover:text-blue-600">
+           Contact Us
+          </Link>
           <Link href="/LOGIN" className="hover:text-blue-600">
             Login
           </Link>
