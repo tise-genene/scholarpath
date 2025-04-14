@@ -1,28 +1,27 @@
-import Image from "next/image";
-import Link from "next/link";
+'use client';
 
-export default function BlogPostCard({ post }: { post: any }) {
-  const { title, slug, content, image } = post;
-  const imageUrl = image?.data?.attributes?.url;
+import Link from 'next/link';
 
+type Props = {
+  id: number;
+  title: string;
+  content: string;
+  imageUrl: string;
+  publishedAt: string;
+};
+
+export function BlogPostCard({ id, title, content, imageUrl, publishedAt }: Props) {
   return (
-    <div className="border rounded-xl p-4 shadow-md hover:shadow-xl transition bg-white">
-      {imageUrl && (
-        <Image
-          src={imageUrl}
-          alt={title}
-          width={600}
-          height={300}
-          className="rounded-md mb-4"
-        />
-      )}
-      <h2 className="text-xl font-bold mb-2">{title}</h2>
-      <p className="text-gray-600 text-sm mb-4">
-        {content?.substring(0, 120)}...
-      </p>
-      <Link href={`/blog/${slug}`} className="text-blue-600 font-semibold hover:underline">
-        Read More →
-      </Link>
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
+      <img src={imageUrl} alt={title} className="w-full h-48 object-cover" />
+      <div className="p-4">
+        <h2 className="text-lg font-semibold">{title}</h2>
+        <p className="text-sm text-gray-600">{new Date(publishedAt).toLocaleDateString()}</p>
+        <p className="mt-2 text-sm line-clamp-3">{content}</p>
+        <Link href={`/blog/${id}`} className="text-blue-600 mt-2 block hover:underline">
+          Read more →
+        </Link>
+      </div>
     </div>
   );
 }
