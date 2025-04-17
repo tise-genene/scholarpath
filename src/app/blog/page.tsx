@@ -22,7 +22,11 @@ const BlogPage = () => {
     const fetchPosts = async () => {
       try {
         const res = await axios.get('http://localhost:1337/api/posts?populate=*');
-        const rawData = res.data.data;
+        interface ApiResponse {
+          data: any[];
+        }
+
+        const rawData = (res.data as ApiResponse).data;
 
         const parsedPosts = rawData.map((post: any) => {
           const title = post.title || post.attributes?.title || 'Untitled';

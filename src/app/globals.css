@@ -1,4 +1,21 @@
 @import "tailwindcss";
+@tailwind utilities;
+
+
+/* Base Light Mode */
+html {
+  @apply bg-white text-black;
+}
+
+/* Dark Mode */
+html.dark {
+  @apply bg-gray-900 text-white;
+}
+
+/* Optional: Smooth transition */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
 :root {
   --background: #ffffff;
@@ -23,4 +40,15 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+html {
+  background-color: white;
+  color: black;
+}
+
+html.dark {
+  background-color: #0f172a; /* Tailwind's slate-900 */
+  color: white;
 }
