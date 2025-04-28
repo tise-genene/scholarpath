@@ -90,9 +90,6 @@ export default function AboutMe() {
           </motion.div>
         </motion.div>
       </section>
-
-      {/* Footer */}
-      <Footer />
     </>
   );
 }
