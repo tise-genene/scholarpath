@@ -166,10 +166,7 @@ export default function AboutMe() {
             "Canada",
             "UK",
             "Germany",
-            "Australia",
-            "Netherlands",
-            "Japan",
-            "South Korea",
+            
           ].map((country) => (
             <motion.div
               key={country}
