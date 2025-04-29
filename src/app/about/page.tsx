@@ -117,7 +117,7 @@ export default function AboutMe() {
           {[
             {
               title: "Integrity",
-              desc: "Honest and transparent support at every stage of your scholarship journey.",
+              desc: "Honest and transparent",
             },
             {
               title: "Excellence",

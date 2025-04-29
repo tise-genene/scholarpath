@@ -97,7 +97,7 @@ export default function ScholarshipsPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Why Apply Through Us?
+            Why To Apply Through Us?
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">

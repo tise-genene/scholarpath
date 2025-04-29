@@ -43,7 +43,7 @@ export default function ContactPage() {
           className="text-4xl font-extrabold text-center text-blue-800 mb-3"
           variants={itemVariants}
         >
-          Get in <span className="text-purple-600">Touch</span>
+          Get in <span className="text-purple-600">Touch with me</span>
         </motion.h2>
 
         <motion.p
