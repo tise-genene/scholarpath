@@ -51,9 +51,7 @@ export default function AboutMe() {
             <motion.p
               className="text-gray-600 text-base leading-relaxed"
               variants={itemVariants}
-            >
-              
-            </motion.p>
+            ></motion.p>
             <motion.button
               className="bg-purple-700 text-white px-8 py-4 rounded-full font-bold hover:bg-purple-800 transition-all duration-300 shadow-lg"
               whileHover={{
@@ -106,12 +104,11 @@ export default function AboutMe() {
         </motion.h3>
 
         <motion.p
-  className="text-gray-700 text-lg sm:text-xl text-center max-w-3xl mb-12"
-  variants={itemVariants}
->
-  I believe in integrity, passion, and empowerment. Every student deserves an opportunity to shine and realize their dreams — and I'm here to make that journey a little easier, one step at a time.
-</motion.p>
-
+          className="text-gray-700 text-lg sm:text-xl text-center max-w-3xl mb-12"
+          variants={itemVariants}
+        >
+          I believe in integrity, passion, and empowerment. Every student deserves an opportunity to shine and realize their dreams — and I'm here to make that journey a little easier, one step at a time.
+        </motion.p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 w-full max-w-6xl">
           {[
@@ -141,8 +138,51 @@ export default function AboutMe() {
         </div>
       </motion.section>
 
-     
-    
+      {/* New Section: Study Abroad Destinations */}
+      <motion.section
+        className="relative w-screen flex flex-col items-center justify-start px-4 sm:px-10 py-20 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+      >
+        <motion.h3
+          className="text-4xl sm:text-5xl font-extrabold text-blue-800 dark:text-blue-400 text-center mb-10"
+          variants={itemVariants}
+        >
+          🌍 Our Study Abroad Destinations
+        </motion.h3>
+
+        <motion.p
+          className="text-gray-700 dark:text-gray-300 text-lg sm:text-xl text-center max-w-3xl mb-12"
+          variants={itemVariants}
+        >
+          We help students pursue their dreams in top international destinations.
+        </motion.p>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-5xl w-full">
+          {[
+            "USA",
+            "Canada",
+            "UK",
+            "Germany",
+            "Australia",
+            "Netherlands",
+            "Japan",
+            "South Korea",
+          ].map((country) => (
+            <motion.div
+              key={country}
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-4 text-center font-semibold text-blue-700 dark:text-blue-300 hover:shadow-lg transition"
+              variants={itemVariants}
+            >
+              {country}
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
+      
     </>
   );
 }
