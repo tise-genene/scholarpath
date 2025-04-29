@@ -61,187 +61,225 @@ export default function Page() {
 
   return (
     <main className="relative min-h-screen bg-gradient-to-br from-white via-indigo-50 to-rose-50">
-      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5 pointer-events-none"></div>
 
-      {/* Modal */}
-      {showPaymentModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
-          <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-lg relative">
-            <button
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-              onClick={() => setShowPaymentModal(false)}
-            >
-              <X size={20} />
-            </button>
-            <h2 className="text-xl font-bold text-purple-600 mb-4">Pay with Local Bank</h2>
-            <p className="text-gray-700 mb-2">
-              Please use the following account details to make your payment via CBE:
-            </p>
-            <div className="bg-gray-100 rounded-lg p-4 text-sm text-gray-800 space-y-2 mb-4">
-              <p><strong>Account Name:</strong> ABC Payments PLC</p>
-              <p><strong>Bank:</strong> Commercial Bank of Ethiopia</p>
-              <p><strong>Account Number:</strong> 1000456789123</p>
-              <p><strong>Branch:</strong> Bole Branch</p>
+      {/* --- HERO/ABOUT SECTION: Tegegn & Pathway --- */}
+      {/* Subtle gradient background for hero */}
+      <div className="absolute top-0 left-0 w-full h-[650px] bg-gradient-to-br from-purple-100 via-white to-pink-100 opacity-80 -z-10" />
+      <section className="relative z-10 py-20 px-4 md:px-0 flex flex-col items-center text-center bg-transparent">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-10 w-full max-w-5xl mx-auto">
+          <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
+            <img src="/tegegn.jpg" alt="Tegegn, Scholarship Consultant" className="w-40 h-40 rounded-full object-cover shadow-lg border-4 border-purple-200 mb-4" />
+            <span className="font-semibold text-lg text-purple-700 mb-2">Tegegn, Scholarship Consultant</span>
+            <h1 className="text-3xl md:text-5xl font-extrabold text-purple-700 mb-4 drop-shadow-lg">Your Pathway to Global Opportunities</h1>
+            <p className="text-gray-700 mb-4 max-w-md">Welcome! I’m Tegegn, your trusted guide to scholarships, study abroad, and student services. Unlock opportunities across the world and increase your chances of studying at top universities abroad.</p>
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start mb-4">
+              <a href="/scholarships" className="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition text-base">
+                Explore Scholarships
+              </a>
+              <a href="/counseling/booking" className="bg-pink-600 hover:bg-pink-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition text-base">
+                Book a Counseling Session
+              </a>
             </div>
-
-            <label className="block mb-3 font-medium text-gray-700">Upload Payment Receipt:</label>
-            <input
-              type="file"
-              accept="image/*,application/pdf"
-              onChange={handleUpload}
-              className="block w-full border border-gray-300 rounded-lg px-3 py-2"
-            />
-
-            {receipt && (
-              <p className="text-green-600 mt-2 text-sm">✅ {receipt.name} selected</p>
-            )}
-
-            <button
-              onClick={() => alert('Receipt submitted (mock logic)')}
-              className="mt-4 w-full bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition"
-            >
-              Submit Receipt
-            </button>
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+              <a href="/webinars" className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition text-base">
+                Join Our Webinar
+              </a>
+              <a href="/payments" className="bg-white border border-purple-600 text-purple-700 hover:bg-purple-50 font-semibold px-6 py-3 rounded-full shadow-lg transition text-base">
+                Make International Payments
+              </a>
+            </div>
+          </div>
+          <div className="flex-1 flex flex-col items-center">
+            {/* Optional: Add a quote or testimonial here for extra trust */}
+            <div className="bg-white/90 rounded-2xl shadow-lg p-6 mt-8 md:mt-0">
+              <h3 className="text-xl font-bold text-purple-800 mb-2">Why Work With Me?</h3>
+              <ul className="list-disc pl-6 text-gray-700 space-y-1 text-left">
+                <li>Personalized, expert guidance for every student</li>
+                <li>Years of experience with international scholarships</li>
+                <li>Proven success stories from students worldwide</li>
+                <li>Transparent, student-first approach</li>
+              </ul>
+              {/* Trust badges or affiliations (placeholder) */}
+              <div className="flex gap-4 mt-6 justify-center">
+                <img src="/badge-1.svg" alt="Trusted" className="h-10" />
+                <img src="/badge-2.svg" alt="Certified" className="h-10" />
+                <img src="/badge-3.svg" alt="Partner" className="h-10" />
+              </div>
+            </div>
           </div>
         </div>
-      )}
+      </section>
 
-      {/* Main Content */}
-      <div className="relative z-10 flex flex-col justify-center min-h-screen px-6 py-12 md:py-20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          {/* Text Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6 text-center md:text-left"
-          >
-            <h1 className="text-5xl font-extrabold text-gray-900 leading-tight">
-              Your Pathway to <span className="text-purple-600">Global Opportunities</span>
-            </h1>
-            <p className="text-lg text-gray-600">
-              Discover and apply to scholarships that align with your goals and dreams.
-            </p>
-
-            {/* Search Bar */}
-            <div className="relative w-full max-w-md mx-auto md:mx-0 flex z-10">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
-              <input
-                type="text"
-                placeholder="Search features..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-l-lg shadow-sm focus:ring-2 focus:ring-purple-400 outline-none text-gray-900 bg-white"
-              />
-              <button
-                className="px-4 py-2 bg-purple-600 text-white rounded-r-lg hover:bg-purple-700 transition-colors"
-                type="button"
-              >
-                Go
-              </button>
-            </div>
-
-            {/* Feature Results */}
-            {searchTerm && (
-              <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {filteredFeatures.length > 0 ? (
-                  filteredFeatures.map((feature, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: index * 0.1 }}
-                      className="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-all"
-                    >
-                      <h3 className="text-xl font-semibold text-purple-600">{feature.title}</h3>
-                      <p className="text-gray-600 mt-2">{feature.description}</p>
-                    </motion.div>
-                  ))
-                ) : (
-                  <p className="text-center text-gray-500 col-span-full">No matching features found.</p>
-                )}
-              </div>
-            )}
-
-            {/* Animated Action Buttons */}
-            <motion.div
-              ref={ref}
-              initial="hidden"
-              animate={controls}
-              variants={{
-                hidden: { opacity: 0, y: 30 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { staggerChildren: 0.1 },
-                },
-              }}
-              className="mt-10 space-y-8"
-            >
-              <div>
-                <h2 className="text-lg font-semibold text-gray-700 mb-3">Get Started</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <motion.button
-                    variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                    className="flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-4 rounded-xl font-semibold shadow-md hover:scale-105 transition-transform duration-300"
-                  >
-                    <BookOpenCheck size={20} />
-                    Explore Scholarships
-                  </motion.button>
-                  <motion.button
-                    variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                    className="flex items-center justify-center gap-2 border-2 border-purple-500 text-purple-600 px-6 py-4 rounded-xl font-semibold hover:bg-purple-50 transition-all duration-300"
-                  >
-                    <CalendarCheck size={20} />
-                    Book Consultation
-                  </motion.button>
-                </div>
-              </div>
-
-              <div>
-                <h2 className="text-lg font-semibold text-gray-700 mb-3">Stay Informed</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <motion.button
-                    variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                    className="flex items-center justify-center gap-2 bg-blue-500 text-white px-6 py-4 rounded-xl font-semibold hover:bg-blue-600 transition"
-                  >
-                    <Video size={20} />
-                    Join Webinar
-                  </motion.button>
-                  <motion.button
-                    variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                    className="flex items-center justify-center gap-2 bg-green-500 text-white px-6 py-4 rounded-xl font-semibold hover:bg-green-600 transition"
-                  >
-                    <Download size={20} />
-                    Download Resources
-                  </motion.button>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Image Section + Payment Button */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9 }}
-            className="flex flex-col items-center gap-4"
-          >
-            <button
-              onClick={() => setShowPaymentModal(true)}
-              className="flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full font-medium shadow-md transition"
-            >
-              <Banknote size={18} />
-              Pay with Local Bank
-            </button>
-            <img
-              src="/tegegn.jpg"
-              alt="Scholarship illustration"
-              className="w-full max-w-md object-contain rounded-2xl shadow-xl"
-            />
-          </motion.div>
+      {/* --- WHAT I OFFER --- */}
+      <section className="py-16 bg-white/80">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-purple-900 mb-10">What I Offer</h2>
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+          {[
+            { icon: <Search className="w-10 h-10 text-purple-600 mx-auto mb-4" />, title: "Scholarship Listings", desc: "Curated scholarships for all levels and countries.", href: "/scholarships" },
+            { icon: <BookOpenCheck className="w-10 h-10 text-pink-500 mx-auto mb-4" />, title: "Counseling", desc: "1:1 sessions, CV/motivation letter review, interview prep.", href: "/counseling/booking" },
+            { icon: <Video className="w-10 h-10 text-indigo-500 mx-auto mb-4" />, title: "Webinars & Trainings", desc: "Live and recorded sessions to boost your application.", href: "/webinars" },
+            { icon: <Banknote className="w-10 h-10 text-green-500 mx-auto mb-4" />, title: "International Payments", desc: "Secure tuition and fee payments, hassle-free.", href: "/payments" },
+          ].map((service, i) => (
+            <a key={i} href={service.href} className="bg-white rounded-2xl shadow-md p-8 text-center flex flex-col items-center hover:scale-105 transition group">
+              {service.icon}
+              <h3 className="text-xl font-semibold mb-2 group-hover:text-purple-700 transition">{service.title}</h3>
+              <p className="text-gray-600 mb-4">{service.desc}</p>
+              <span className="text-purple-600 font-medium group-hover:underline">Learn More</span>
+            </a>
+          ))}
         </div>
-      </div>
+      </section>
+
+      {/* --- HOW IT WORKS --- */}
+      <section className="py-16 bg-gradient-to-r from-purple-50 via-white to-pink-50">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-purple-900 mb-10">How It Works</h2>
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+          {[
+            { icon: <Search className="w-10 h-10 text-purple-600 mx-auto mb-4" />, title: "Explore Scholarships", desc: "Browse and filter scholarships by country, degree, and more." },
+            { icon: <BookOpenCheck className="w-10 h-10 text-pink-500 mx-auto mb-4" />, title: "Book Counseling", desc: "Get expert help with your applications and documents." },
+            { icon: <Video className="w-10 h-10 text-indigo-500 mx-auto mb-4" />, title: "Join Webinars", desc: "Learn from exclusive sessions and Q&As." },
+            { icon: <Banknote className="w-10 h-10 text-green-500 mx-auto mb-4" />, title: "Make Payments", desc: "Pay tuition and fees securely with ease." },
+          ].map((step, i) => (
+            <div key={i} className="bg-white rounded-2xl shadow-md p-8 text-center flex flex-col items-center">
+              {step.icon}
+              <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+              <p className="text-gray-600">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* --- ABOUT TEGEGN --- */}
+      <section className="py-16 bg-gradient-to-br from-white via-purple-50 to-pink-50">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10">
+          <img src="/tegegn-profile.jpg" alt="Tegegn, Scholarship Consultant" className="w-40 h-40 rounded-full object-cover shadow-lg border-4 border-purple-200 mb-4 md:mb-0" />
+          <div>
+            <h2 className="text-3xl font-bold text-purple-800 mb-2">Hi, I’m Tegegn.</h2>
+            <p className="text-lg text-gray-700 mb-4">I’m passionate about helping students access global education opportunities. Through this platform, I provide information on scholarships, one-on-one counseling, and payment services to make studying abroad easier for you.</p>
+            <div className="bg-purple-50 rounded-xl p-4">
+              <h3 className="font-semibold text-purple-700 mb-2">Why Work With Me?</h3>
+              <ul className="list-disc pl-6 text-gray-700 space-y-1">
+                <li>Personalized, expert guidance for every student</li>
+                <li>Years of experience with international scholarships</li>
+                <li>Proven success stories from students worldwide</li>
+                <li>Transparent, student-first approach</li>
+              </ul>
+            </div>
+            {/* Trust badges or affiliations (placeholder) */}
+            <div className="flex gap-4 mt-6">
+              <img src="/badge-1.svg" alt="Trusted" className="h-10" />
+              <img src="/badge-2.svg" alt="Certified" className="h-10" />
+              <img src="/badge-3.svg" alt="Partner" className="h-10" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* --- HOW IT WORKS --- */}
+      <section className="py-16 bg-white/60 backdrop-blur-md">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-purple-900 mb-10">How It Works</h2>
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+          {[
+            { icon: <Search className="w-10 h-10 text-purple-600 mx-auto mb-4" />, title: "Create Profile", desc: "Sign up and tell us about your goals and background." },
+            { icon: <BookOpenCheck className="w-10 h-10 text-pink-500 mx-auto mb-4" />, title: "Get Matches", desc: "Receive scholarships curated just for you." },
+            { icon: <CalendarCheck className="w-10 h-10 text-indigo-500 mx-auto mb-4" />, title: "Apply Easily", desc: "Track deadlines and submit applications in one place." },
+            { icon: <Video className="w-10 h-10 text-green-500 mx-auto mb-4" />, title: "Expert Guidance", desc: "Access counseling, webinars, and resources." },
+          ].map((step, i) => (
+            <div key={i} className="bg-white rounded-2xl shadow-md p-8 text-center flex flex-col items-center">
+              {step.icon}
+              <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+              <p className="text-gray-600">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* --- FEATURED SCHOLARSHIPS --- */}
+      <section className="py-16 px-4 bg-gradient-to-r from-purple-50 via-white to-pink-50">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-purple-900 mb-10">Featured Scholarships</h2>
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {[1, 2, 3].map((n) => (
+            <div key={n} className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-start hover:scale-105 transition">
+              <img src="/scholarship-placeholder.svg" alt="Scholarship" className="w-full h-40 object-cover rounded mb-4" />
+              <h3 className="text-xl font-bold text-purple-700 mb-2">Scholarship Title {n}</h3>
+              <p className="text-gray-600 mb-2">A brief description of this featured scholarship. Eligibility, amount, and deadline info goes here.</p>
+              <a href="/scholarships" className="text-purple-600 font-medium hover:underline mt-auto">Learn More</a>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* --- FEATURES/BENEFITS --- */}
+      <section className="py-16 bg-white/80">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-purple-800 mb-10">Why ScholarPath?</h2>
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+          {FEATURES.map((feature, i) => (
+            <div key={i} className="flex items-start gap-5 bg-gradient-to-r from-purple-100 to-pink-100 rounded-2xl p-8 shadow hover:shadow-lg transition">
+              <div className="flex-shrink-0">
+                {i === 0 && <Search className="w-8 h-8 text-purple-600" />}
+                {i === 1 && <CalendarCheck className="w-8 h-8 text-pink-500" />}
+                {i === 2 && <Video className="w-8 h-8 text-indigo-500" />}
+                {i === 3 && <BookOpenCheck className="w-8 h-8 text-green-500" />}
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-1">{feature.title}</h3>
+                <p className="text-gray-700">{feature.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* --- TESTIMONIALS --- */}
+      <section className="py-16 bg-gradient-to-r from-white via-purple-50 to-pink-50">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-purple-800 mb-10">Success Stories</h2>
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            { name: "Amina T.", text: "ScholarPath helped me find a full scholarship abroad! The counseling was amazing and I felt supported at every step." },
+            { name: "Samuel B.", text: "I never thought I'd get so many opportunities. The webinars and resources are top-notch!" },
+            { name: "Liya G.", text: "The platform is so easy to use. I matched with scholarships I never knew existed." },
+          ].map((t, i) => (
+            <div key={i} className="bg-white rounded-2xl shadow-lg p-8 text-center flex flex-col items-center">
+              <img src={`/user-${i+1}.svg`} alt={t.name} className="w-20 h-20 rounded-full mb-4 border-4 border-purple-100" />
+              <p className="text-gray-700 italic mb-2">“{t.text}”</p>
+              <span className="font-semibold text-purple-700">{t.name}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* --- FAQ --- */}
+      <section className="py-16 bg-white/70">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-purple-800 mb-10">Frequently Asked Questions</h2>
+        <div className="max-w-3xl mx-auto space-y-6">
+          {[
+            { q: "Is ScholarPath free to use?", a: "Yes! You can search and match with scholarships for free. Some premium services may have a fee." },
+            { q: "Do I need to pay to apply for scholarships?", a: "No, applying for scholarships through ScholarPath is free. Some universities may have their own application fees." },
+            { q: "Can I get personal counseling?", a: "Absolutely! Our experts are available for one-on-one counseling sessions." },
+            { q: "How do I know if I'm eligible for a scholarship?", a: "Our matching system only shows scholarships you are eligible for based on your profile." },
+          ].map((faq, i) => (
+            <div key={i} className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 shadow">
+              <h3 className="font-semibold text-lg mb-2 text-purple-700">{faq.q}</h3>
+              <p className="text-gray-700">{faq.a}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* --- NEWSLETTER SIGNUP --- */}
+      <section className="py-16 bg-gradient-to-r from-pink-50 via-white to-purple-50">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-purple-800 mb-4">Stay Updated</h2>
+          <p className="text-gray-700 mb-6">Get the latest scholarships and tips delivered to your inbox.</p>
+          <form className="flex flex-col sm:flex-row gap-4 justify-center">
+            <input type="email" required placeholder="Enter your email" className="px-6 py-3 rounded-full border border-purple-300 focus:ring-2 focus:ring-purple-400 outline-none w-full sm:w-auto" />
+            <button type="submit" className="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-8 py-3 rounded-full shadow-lg transition">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </section>
     </main>
   );
 }
