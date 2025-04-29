@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@tailwind utilities;
+@custom-variant dark (&:where(.dark, .dark *));
 
 
 /* Base Light Mode */
@@ -12,15 +12,12 @@ html.dark {
   @apply bg-gray-900 text-white;
 }
 
+
 /* Optional: Smooth transition */
 body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
 @theme inline {
   --color-background: var(--background);
