@@ -46,12 +46,18 @@ export default function ThemeToggle() {
     <div className="relative inline-block text-left">
       <button
         ref={buttonRef}
-        className="flex items-center gap-2 px-2 py-1.5 rounded-md bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 transition"
-        onClick={() => setOpen((o) => !o)}
-        aria-haspopup="menu"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-300 bg-white dark:bg-gray-900 shadow hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
+        onClick={() => setOpen((v) => !v)}
+        aria-haspopup="true"
         aria-expanded={open}
         aria-label="Toggle theme menu"
-        type="button"
+        title="Toggle theme"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            setOpen((v) => !v);
+          }
+        }}
       >
         {resolvedTheme === "dark" ? <Moon className="w-5 h-5" /> : resolvedTheme === "light" ? <Sun className="w-5 h-5" /> : <Monitor className="w-5 h-5" />}
       </button>

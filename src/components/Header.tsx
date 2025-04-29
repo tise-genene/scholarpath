@@ -33,7 +33,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-6 text-sm font-medium">
+        <nav className="hidden md:flex space-x-6 text-sm font-medium" role="navigation" aria-label="Main Navigation">
           {navItems.map(({ label, href }) => (
             <Link
               key={href}
@@ -53,9 +53,15 @@ export default function Header() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-gray-700 dark:text-gray-200"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+          className="md:hidden flex items-center px-3 py-2 border rounded text-gray-700 border-gray-400 hover:text-blue-600 hover:border-blue-600 dark:text-gray-200 dark:border-gray-600 dark:hover:text-blue-400 dark:hover:border-blue-400"
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label="Open menu"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              setMenuOpen((v) => !v);
+            }
+          }}
         >
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
