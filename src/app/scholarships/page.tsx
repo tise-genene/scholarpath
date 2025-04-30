@@ -124,6 +124,131 @@ export default function ScholarshipsPage() {
           </div>
         </div>
       </section>
+      {/* Top Study Destinations Section */}
+<section className="py-20 px-6 sm:px-10 bg-gradient-to-br from-purple-50 to-blue-50">
+  <div className="max-w-6xl mx-auto text-center">
+    <motion.h2
+      className="text-4xl sm:text-5xl font-extrabold text-blue-900 mb-10"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      🌍 Top Study Destinations
+    </motion.h2>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      {[
+        { country: "USA", flag: "🇺🇸", description: "Known for Ivy League and fully funded opportunities." },
+        { country: "UK", flag: "🇬🇧", description: "Home to Chevening, Commonwealth, and other major awards." },
+        { country: "Germany", flag: "🇩🇪", description: "Free tuition and DAAD-funded options for all levels." },
+        { country: "Canada", flag: "🇨🇦", description: "Generous government and university scholarships." },
+      ].map((item, index) => (
+        <motion.div
+          key={index}
+          className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition hover:scale-105"
+          whileHover={{ scale: 1.05 }}
+        >
+          <h3 className="text-xl font-semibold mb-2">
+            {item.flag} {item.country}
+          </h3>
+          <p className="text-gray-700 text-sm">{item.description}</p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+      {/* How We Help Section */}
+<section className="py-20 px-6 sm:px-10 bg-white">
+  <div className="max-w-6xl mx-auto text-center">
+    <motion.h2
+      className="text-4xl sm:text-5xl font-extrabold text-purple-800 mb-10"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      🎯 How We Help You Win Scholarships
+    </motion.h2>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      {[
+        { title: "Profile Review", desc: "We evaluate your academic and extracurricular strengths." },
+        { title: "Opportunity Match", desc: "We connect you with the right scholarships." },
+        { title: "Essay Support", desc: "We review and refine your statements to make them stand out." },
+        { title: "Submission Strategy", desc: "We guide you on how and when to apply for maximum success." },
+      ].map((item, index) => (
+        <motion.div
+          key={index}
+          className="bg-purple-100 rounded-xl shadow-md p-6 hover:shadow-xl transition hover:scale-105"
+          whileHover={{ scale: 1.05 }}
+        >
+          <h3 className="text-lg font-bold text-purple-800 mb-2">{item.title}</h3>
+          <p className="text-gray-700 text-sm">{item.desc}</p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+{/* Success Stories Section */}
+<section className="py-20 px-6 sm:px-10 bg-gradient-to-br from-pink-50 to-purple-50">
+  <div className="max-w-6xl mx-auto text-center">
+    <motion.h2
+      className="text-4xl sm:text-5xl font-extrabold text-pink-700 mb-12"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      🌟 Success Stories
+    </motion.h2>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+      {[
+        {
+          name: "Liya from Ethiopia",
+          quote: "Thanks to the support I received, I secured a fully funded scholarship in Germany!",
+          country: "Germany",
+          image: "/students/liya.jpg", // Replace with your actual image path
+        },
+        {
+          name: "Samuel from Kenya",
+          quote: "This platform gave me the tools and confidence to apply abroad — now I’m studying in the UK.",
+          country: "UK",
+          image: "/students/samuel.jpg",
+        },
+        {
+          name: "Fatima from Nigeria",
+          quote: "I was guided every step of the way — from essays to interviews. I got a scholarship in Canada!",
+          country: "Canada",
+          image: "/students/fatima.jpg",
+        },
+      ].map((story, index) => (
+        <motion.div
+          key={index}
+          className="bg-white rounded-2xl shadow-md p-6 text-left hover:shadow-xl transition hover:scale-105"
+          whileHover={{ scale: 1.03 }}
+        >
+          <div className="flex items-center gap-4 mb-4">
+            <img
+              src={story.image}
+              alt={story.name}
+              className="w-14 h-14 rounded-full object-cover border-2 border-purple-400"
+            />
+            <div>
+              <h4 className="font-semibold text-purple-800">{story.name}</h4>
+              <p className="text-sm text-gray-500">{story.country}</p>
+            </div>
+          </div>
+          <p className="text-gray-700 italic">"{story.quote}"</p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
     </>
   );
 }
