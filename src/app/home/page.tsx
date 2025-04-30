@@ -1,5 +1,11 @@
+export const metadata = {
+  title: 'Home | ScholarPath',
+  description: 'Welcome to ScholarPath! Explore scholarships, counseling, and resources to achieve your academic dreams.',
+};
+
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 
 const FEATURES = [
   {
@@ -94,10 +100,13 @@ export default function Home() {
 
           {/* Image */}
           <div className="flex justify-center">
-            <img
+            <Image
               src="/tegegn.jpg"
               alt="Scholarship illustration"
+              width={400}
+              height={400}
               className="w-full max-w-md object-contain opacity-80"
+              priority
             />
           </div>
         </div>
