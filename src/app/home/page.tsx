@@ -1,9 +1,5 @@
 "use client";
 
-export const metadata = {
-  title: 'Home | ScholarPath',
-  description: 'Welcome to ScholarPath! Explore scholarships, counseling, and resources to achieve your academic dreams.',
-};
 import { useState } from "react";
 import Image from "next/image";
 
@@ -26,7 +22,7 @@ const FEATURES = [
   },
 ];
 
-export default function Home() {
+function Home() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredFeatures = FEATURES.filter((feature) =>
