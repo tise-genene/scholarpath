@@ -152,12 +152,15 @@ export default function Page() {
               <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto mb-8">
                 Discover your perfect scholarship match and get expert guidance to achieve your academic goals
               </p>
-              <ul className="list-disc pl-6 text-gray-700 space-y-1 text-left">
+              <div className="bg-purple-50 rounded-xl p-4">
+              <h3 className="font-semibold text-purple-700 mb-2">Why Work With Me?</h3>
+              <ul className="list-disc pl-6 text-gray-700 space-y-1">
                 <li>Personalized, expert guidance for every student</li>
                 <li>Years of experience with international scholarships</li>
                 <li>Proven success stories from students worldwide</li>
                 <li>Transparent, student-first approach</li>
               </ul>
+            </div>
               {/* Trust badges or affiliations (placeholder) */}
               <div className="flex gap-4 mt-6 justify-center">
                 <img src="/badge-1.svg" alt="Trusted" className="h-10" />
@@ -241,33 +244,6 @@ export default function Page() {
           ))}
         </div>
       </section>
-
-      {/* --- ABOUT TEGEGN --- */}
-      <section className="py-16 bg-gradient-to-br from-white via-purple-50 to-pink-50">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10">
-          <img src="/tegegn-profile.jpg" alt="Tegegn, Scholarship Consultant" className="w-40 h-40 rounded-full object-cover shadow-lg border-4 border-purple-200 mb-4 md:mb-0" />
-          <div>
-            <h2 className="text-3xl font-bold text-purple-800 mb-2">Hi, I’m Tegegn.</h2>
-            <p className="text-lg text-gray-700 mb-4">I’m passionate about helping students access global education opportunities. Through this platform, I provide information on scholarships, one-on-one counseling, and payment services to make studying abroad easier for you.</p>
-            <div className="bg-purple-50 rounded-xl p-4">
-              <h3 className="font-semibold text-purple-700 mb-2">Why Work With Me?</h3>
-              <ul className="list-disc pl-6 text-gray-700 space-y-1">
-                <li>Personalized, expert guidance for every student</li>
-                <li>Years of experience with international scholarships</li>
-                <li>Proven success stories from students worldwide</li>
-                <li>Transparent, student-first approach</li>
-              </ul>
-            </div>
-            {/* Trust badges or affiliations (placeholder) */}
-            <div className="flex gap-4 mt-6">
-              <img src="/badge-1.svg" alt="Trusted" className="h-10" />
-              <img src="/badge-2.svg" alt="Certified" className="h-10" />
-              <img src="/badge-3.svg" alt="Partner" className="h-10" />
-            </div>
-          </div>
-        </div>
-      </section>
-
 
       {/* --- HOW IT WORKS --- */}
       <section className="py-16 bg-white/60 backdrop-blur-md">
