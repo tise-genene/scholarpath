@@ -178,6 +178,87 @@ export default function AboutMe() {
           ))}
         </div>
       </motion.section>
+      <section className="py-20 px-6 sm:px-10 bg-blue-50">
+  <div className="max-w-6xl mx-auto text-center">
+    <h2 className="text-4xl font-bold text-blue-800 mb-10">🎯 What I Offer</h2>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {[
+        { title: "Scholarship Matching", desc: "Personalized scholarship recommendations based on your profile." },
+        { title: "1-on-1 Counseling", desc: "Dedicated sessions to plan your academic journey abroad." },
+        { title: "Application Strategy", desc: "Support with writing essays, building resumes, and interview prep." },
+      ].map((item, i) => (
+        <div key={i} className="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
+          <h3 className="text-xl font-semibold text-purple-700 mb-2">{item.title}</h3>
+          <p className="text-gray-600">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+<motion.section
+  className="py-20 px-6 sm:px-10 bg-gradient-to-r from-purple-50 to-blue-50"
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.7 }}
+  viewport={{ once: true }}
+>
+  <div className="max-w-4xl mx-auto text-center">
+    <h2 className="text-4xl font-bold text-purple-800 mb-6">🚀 My Mission</h2>
+    <p className="text-lg text-gray-700 leading-relaxed">
+      My mission is to empower students globally by providing them access to life-changing education opportunities through scholarships, mentorship, and dedicated support.
+    </p>
+  </div>
+</motion.section>
+
+<section className="py-20 px-6 sm:px-10 bg-white">
+  <div className="max-w-4xl mx-auto">
+    <h2 className="text-4xl font-bold text-purple-800 text-center mb-10">❓ Frequently Asked Questions</h2>
+    <div className="space-y-6">
+      {[
+        {
+          q: "Do I need perfect grades to win a scholarship?",
+          a: "Not necessarily. Many scholarships consider leadership, community service, and motivation too.",
+        },
+        {
+          q: "Can you help with non-English speaking countries?",
+          a: "Yes! I assist with scholarships in Germany, China, France, and many more.",
+        },
+        {
+          q: "How early should I start preparing?",
+          a: "Ideally 6–12 months in advance. Early preparation boosts your success rate.",
+        },
+      ].map((faq, i) => (
+        <div key={i} className="bg-purple-50 p-6 rounded-xl shadow">
+          <h4 className="font-semibold text-purple-700 mb-2">{faq.q}</h4>
+          <p className="text-gray-700">{faq.a}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+<motion.section
+  className="py-20 bg-gradient-to-r from-blue-100 to-purple-200 text-center"
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  transition={{ duration: 0.6 }}
+  viewport={{ once: true }}
+>
+  <div className="max-w-3xl mx-auto">
+    <h2 className="text-4xl font-bold text-purple-900 mb-4">🤝 Let’s Work Together</h2>
+    <p className="text-lg text-gray-800 mb-8">
+      Ready to start your scholarship journey? Let’s connect and make your dream come true!
+    </p>
+    <a
+      href="/contact"
+      className="inline-block bg-purple-700 text-white px-8 py-4 rounded-full text-lg font-semibold shadow hover:bg-purple-800 transition duration-300"
+    >
+      Get in Touch
+    </a>
+  </div>
+</motion.section>
+
+
+
 
       
     </>
