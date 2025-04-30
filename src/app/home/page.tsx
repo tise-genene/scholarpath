@@ -1,9 +1,9 @@
+"use client";
+
 export const metadata = {
   title: 'Home | ScholarPath',
   description: 'Welcome to ScholarPath! Explore scholarships, counseling, and resources to achieve your academic dreams.',
 };
-
-"use client";
 import { useState } from "react";
 import Image from "next/image";
 
