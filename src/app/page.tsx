@@ -115,13 +115,47 @@ export default function Page() {
         <h2 className="text-3xl md:text-4xl font-bold text-center text-purple-900 mb-10">What I Offer</h2>
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
           {[
-            { icon: <Search className="w-10 h-10 text-purple-600 mx-auto mb-4" />, title: "Scholarship Listings", desc: "Curated scholarships for all levels and countries.", href: "/scholarships" },
-            { icon: <BookOpenCheck className="w-10 h-10 text-pink-500 mx-auto mb-4" />, title: "Counseling", desc: "1:1 sessions, CV/motivation letter review, interview prep.", href: "/counseling/booking" },
-            { icon: <Video className="w-10 h-10 text-indigo-500 mx-auto mb-4" />, title: "Webinars & Trainings", desc: "Live and recorded sessions to boost your application.", href: "/webinars" },
-            { icon: <Banknote className="w-10 h-10 text-green-500 mx-auto mb-4" />, title: "International Payments", desc: "Secure tuition and fee payments, hassle-free.", href: "/payments" },
+            {
+              icon: Search,
+              title: "Scholarship Listings",
+              desc: "Curated scholarships for all levels and countries.",
+              href: "/scholarships",
+              color: "from-purple-50 to-purple-100",
+              iconColor: "text-purple-600",
+              renderIcon: () => <Search className="w-12 h-12" />,
+            },
+            {
+              icon: BookOpenCheck,
+              title: "Counseling",
+              desc: "1:1 sessions, CV/motivation letter review, interview prep.",
+              href: "/counseling/booking",
+              color: "from-pink-50 to-pink-100",
+              iconColor: "text-pink-600",
+              renderIcon: () => <BookOpenCheck className="w-12 h-12" />,
+            },
+            {
+              icon: Video,
+              title: "Webinars & Trainings",
+              desc: "Live and recorded sessions to boost your application.",
+              href: "/webinars",
+              color: "from-indigo-50 to-indigo-100",
+              iconColor: "text-indigo-600",
+              renderIcon: () => <Video className="w-12 h-12" />,
+            },
+            {
+              icon: Banknote,
+              title: "International Payments",
+              desc: "Secure tuition and fee payments, hassle-free.",
+              href: "/payments",
+              color: "from-green-50 to-green-100",
+              iconColor: "text-green-600",
+              renderIcon: () => <Banknote className="w-12 h-12" />,
+            },
           ].map((service, i) => (
             <a key={i} href={service.href} className="bg-white rounded-2xl shadow-md p-8 text-center flex flex-col items-center hover:scale-105 transition group">
-              {service.icon}
+              <div className={`inline-flex items-center justify-center rounded-full w-20 h-20 ${service.color} mb-6`}>
+                {service.renderIcon()}
+              </div>
               <h3 className="text-xl font-semibold mb-2 group-hover:text-purple-700 transition">{service.title}</h3>
               <p className="text-gray-600 mb-4">{service.desc}</p>
               <span className="text-purple-600 font-medium group-hover:underline">Learn More</span>
