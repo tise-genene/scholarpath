@@ -63,37 +63,63 @@ export default function Page() {
     <main className="relative min-h-screen bg-gradient-to-br from-white via-indigo-50 to-rose-50">
 
       {/* --- HERO/ABOUT SECTION: Tegegn & Pathway --- */}
-      {/* Subtle gradient background for hero */}
-      <div className="absolute top-0 left-0 w-full h-[650px] bg-gradient-to-br from-purple-100 via-white to-pink-100 opacity-80 -z-10" />
-      <section className="relative z-10 py-20 px-4 md:px-0 flex flex-col items-center text-center bg-transparent">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-10 w-full max-w-5xl mx-auto">
-          <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
-            <img src="/tegegn.jpg" alt="Tegegn, Scholarship Consultant" className="w-40 h-40 rounded-full object-cover shadow-lg border-4 border-purple-200 mb-4" />
-            <span className="font-semibold text-lg text-purple-700 mb-2">Tegegn, Scholarship Consultant</span>
-            <h1 className="text-3xl md:text-5xl font-extrabold text-purple-700 mb-4 drop-shadow-lg">Your Pathway to Global Opportunities</h1>
-            <p className="text-gray-700 mb-4 max-w-md">Welcome! I’m Tegegn, your trusted guide to scholarships, study abroad, and student services. Unlock opportunities across the world and increase your chances of studying at top universities abroad.</p>
-            <div className="flex flex-wrap gap-4 justify-center md:justify-start mb-4">
-              <a href="/scholarships" className="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition text-base">
-                Explore Scholarships
-              </a>
-              <a href="/counseling/booking" className="bg-pink-600 hover:bg-pink-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition text-base">
-                Book a Counseling Session
-              </a>
+      <section className="relative min-h-screen flex items-center">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-50 to-pink-50 opacity-90"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-50/20 to-transparent opacity-90"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-transparent via-purple-50/20 to-transparent opacity-90"></div>
+        </div>
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center justify-center rounded-full bg-purple-100 p-3 mb-6">
+                <Search className="w-8 h-8 text-purple-600" />
+              </div>
+              <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-900 mb-6">
+                Your Pathway to Global Education
+              </h1>
+              <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto lg:mx-0 mb-8">
+                Discover your perfect scholarship match and get expert guidance to achieve your academic goals
+              </p>
+              <div className="flex justify-center lg:justify-start gap-6 mb-8">
+                <a
+                  href="https://t.me/Tegegnpathway"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 hover:bg-purple-200 transition-colors"
+                >
+                  <svg className="w-5 h-5 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z" />
+                    <path d="M12 16.5C13.3807 16.5 14.5 15.3807 14.5 14C14.5 12.6193 13.3807 11.5 12 11.5C10.6193 11.5 9.5 12.6193 9.5 14C9.5 15.3807 10.6193 16.5 12 16.5Z" />
+                    <path d="M12 7.5C13.3807 7.5 14.5 6.3807 14.5 5C14.5 3.6193 13.3807 2.5 12 2.5C10.6193 2.5 9.5 3.6193 9.5 5C9.5 6.3807 10.6193 7.5 12 7.5Z" />
+                  </svg>
+                  <span className="text-purple-600 font-medium">Telegram</span>
+                </a>
+                <a
+                  href="https://www.youtube.com/@TegegnPathways"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-100 hover:bg-red-200 transition-colors"
+                >
+                  <svg className="w-5 h-5 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z" />
+                    <path d="M15.5 8L10 12L15.5 16" />
+                  </svg>
+                  <span className="text-red-600 font-medium">YouTube</span>
+                </a>
+              </div>
+              <div className="flex justify-center lg:justify-start gap-4">
+                <a href="/scholarships" className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:from-purple-700 hover:to-pink-700 transition">
+                  Find Scholarships
+                </a>
+                <a href="/counseling/booking" className="bg-white border border-purple-600 text-purple-700 hover:bg-purple-50 font-semibold px-8 py-4 rounded-full">
+                  Book Counseling
+                </a>
+              </div>
             </div>
-            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-              <a href="/webinars" className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition text-base">
-                Join Our Webinar
-              </a>
-              <a href="/payments" className="bg-white border border-purple-600 text-purple-700 hover:bg-purple-50 font-semibold px-6 py-3 rounded-full shadow-lg transition text-base">
-                Make International Payments
-              </a>
-            </div>
-          </div>
-          <div className="flex-1 flex flex-col items-center pl-20">
-            {/* Optional: Add a quote or testimonial here for extra trust */}
-            <div className="bg-white/90 rounded-2xl shadow-lg p-10 mt-8 md:mt-0">
+            <div className="bg-white/90 rounded-2xl shadow-lg p-10">
               <h3 className="text-xl font-bold text-purple-800 mb-2">Join My Community</h3>
-              <div className="flex justify-center gap-6 mb-12">
+              <div className="flex justify-center gap-6 mb-8">
                 <a
                   href="https://t.me/Tegegnpathway"
                   target="_blank"
