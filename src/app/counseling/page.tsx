@@ -2,30 +2,26 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaUserGraduate, FaCalendarCheck, FaComments, FaMoneyCheckAlt, FaFileAlt, FaGlobeEurope, FaLaptopCode, FaGraduationCap, FaChalkboardTeacher } from "react-icons/fa";
+import { FaUserGraduate, FaCalendarCheck, FaComments, FaMoneyCheckAlt, FaFileAlt, FaGlobeEurope } from "react-icons/fa";
 
 export default function CounselingPage() {
   return (
-    <section className="min-h-screen w-screen flex flex-col items-center justify-start px-4 sm:px-10 py-10 bg-white relative overflow-hidden">
-      {/* Glowing Effects */}
-      <div className="absolute top-[-5rem] left-[-5rem] w-[400px] h-[400px] bg-blue-300 opacity-30 rounded-full blur-3xl z-0" />
-      <div className="absolute bottom-[-5rem] right-[-5rem] w-[500px] h-[500px] bg-pink-400 opacity-40 rounded-full blur-3xl z-0" />
-
+    <section className="min-h-screen w-screen flex flex-col items-center justify-start px-4 sm:px-10 py-10 bg-white dark:bg-gray-900 relative overflow-hidden">
       {/* Counseling Section */}
       <motion.div
-        className="w-full flex flex-col justify-center items-center bg-white/80 backdrop-blur-md rounded-none shadow-none px-6 md:px-24 py-12 z-10"
+        className="w-full flex flex-col justify-center items-center bg-white dark:bg-gray-900/80 backdrop-blur-md rounded-none shadow-none px-6 md:px-24 py-12 z-10"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
         <motion.h2
-          className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-purple-800 text-center mb-8"
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-purple-800 dark:text-purple-300 text-center mb-8"
           whileHover={{ scale: 1.02 }}
         >
           🎯 Scholarship Counseling
         </motion.h2>
 
-        <p className="text-gray-700 text-xl sm:text-2xl text-center mb-16 max-w-5xl">
+        <p className="text-gray-700 dark:text-gray-200 text-xl sm:text-2xl text-center mb-16 max-w-5xl">
           Get personalized one-on-one guidance to identify the best scholarships, craft winning applications, and level up your academic journey abroad!
         </p>
 
@@ -49,12 +45,12 @@ export default function CounselingPage() {
           ].map(({ Icon, title, desc }, i) => (
             <motion.div
               key={i}
-              className="w-full sm:w-80 bg-white rounded-lg shadow-lg p-6 text-center transition-all duration-300 hover:scale-105"
+              className="w-full sm:w-80 bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 text-center transition-all duration-300 hover:scale-105"
               whileHover={{ scale: 1.05 }}
             >
-              <Icon className="text-purple-600 text-5xl mb-4" />
-              <h4 className="text-2xl font-semibold text-purple-800 mb-2">{title}</h4>
-              <p className="text-gray-600 text-lg">{desc}</p>
+              <Icon className="text-purple-600 dark:text-purple-300 text-5xl mb-4" />
+              <h4 className="text-2xl font-semibold text-purple-800 dark:text-purple-300 mb-2">{title}</h4>
+              <p className="text-gray-600 dark:text-gray-400 text-lg">{desc}</p>
             </motion.div>
           ))}
         </div>
@@ -76,19 +72,19 @@ export default function CounselingPage() {
 
       {/* Services Section */}
       <motion.div
-        className="w-full mt-20 flex flex-col justify-center items-center bg-white/90 backdrop-blur-md px-6 md:px-24 py-12 z-10"
+        className="w-full mt-20 flex flex-col justify-center items-center bg-white dark:bg-gray-900/90 backdrop-blur-md px-6 md:px-24 py-12 z-10"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
         <motion.h3
-          className="text-4xl sm:text-5xl font-extrabold text-blue-900 text-center mb-8"
+          className="text-4xl sm:text-5xl font-extrabold text-blue-900 dark:text-blue-200 text-center mb-8"
           whileHover={{ scale: 1.02 }}
         >
           🌍 Our Student Services
         </motion.h3>
 
-        <p className="text-gray-700 text-lg sm:text-xl text-center mb-12 max-w-4xl">
+        <p className="text-gray-700 dark:text-gray-200 text-lg sm:text-xl text-center mb-12 max-w-4xl">
           We provide a complete suite of services to support your study abroad journey — from application help to international fee payments. Let’s make the process smoother together!
         </p>
 
@@ -127,12 +123,12 @@ export default function CounselingPage() {
           ].map(({ Icon, title, desc }, i) => (
             <motion.div
               key={i}
-              className="w-full sm:w-80 bg-white rounded-lg shadow-lg p-6 text-center transition-all duration-300 hover:scale-105"
+              className="w-full sm:w-80 bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 text-center transition-all duration-300 hover:scale-105"
               whileHover={{ scale: 1.04 }}
             >
-              <Icon className="text-purple-600 text-5xl mb-4" />
-              <h4 className="text-2xl font-semibold text-purple-800 mb-2">{title}</h4>
-              <p className="text-gray-600 text-base">{desc}</p>
+              <Icon className="text-purple-600 dark:text-purple-300 text-5xl mb-4" />
+              <h4 className="text-2xl font-semibold text-purple-800 dark:text-purple-300 mb-2">{title}</h4>
+              <p className="text-gray-600 dark:text-gray-400 text-base">{desc}</p>
             </motion.div>
           ))}
         </div>
@@ -140,13 +136,13 @@ export default function CounselingPage() {
 
       {/* Testimonials Section */}
       <motion.div
-        className="w-full mt-20 bg-gradient-to-b from-purple-100 to-white px-6 md:px-24 py-12"
+        className="w-full mt-20 bg-gradient-to-b from-purple-100 to-white dark:from-gray-900 dark:to-gray-900 px-6 md:px-24 py-12"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
         <motion.h3
-          className="text-4xl sm:text-5xl font-extrabold text-purple-800 text-center mb-8"
+          className="text-4xl sm:text-5xl font-extrabold text-purple-800 dark:text-purple-300 text-center mb-8"
           whileHover={{ scale: 1.02 }}
         >
           🗣️ What Our Students Say
@@ -170,10 +166,10 @@ export default function CounselingPage() {
               location: "Toronto, Canada",
             },
           ].map((testimonial, i) => (
-            <div key={i} className="w-80 sm:w-96 bg-white shadow-lg p-8 rounded-lg text-center">
-              <p className="text-xl font-medium text-gray-600 mb-4">{testimonial.quote}</p>
-              <p className="text-lg font-bold text-purple-700">{testimonial.name}</p>
-              <p className="text-sm text-gray-500">{testimonial.location}</p>
+            <div key={i} className="w-80 sm:w-96 bg-white dark:bg-gray-900 shadow-lg p-8 rounded-lg text-center">
+              <p className="text-xl font-medium text-gray-600 dark:text-gray-400 mb-4">{testimonial.quote}</p>
+              <p className="text-lg font-bold text-purple-700 dark:text-purple-300">{testimonial.name}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{testimonial.location}</p>
             </div>
           ))}
         </div>
@@ -181,19 +177,19 @@ export default function CounselingPage() {
 
       {/* Additional Resources Section */}
       <motion.div
-        className="w-full mt-20 bg-gray-50 px-6 md:px-24 py-12"
+        className="w-full mt-20 bg-gray-50 dark:bg-gray-900 px-6 md:px-24 py-12"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
         <motion.h3
-          className="text-4xl sm:text-5xl font-extrabold text-blue-900 text-center mb-8"
+          className="text-4xl sm:text-5xl font-extrabold text-blue-900 dark:text-blue-200 text-center mb-8"
           whileHover={{ scale: 1.02 }}
         >
           📚 Additional Resources
         </motion.h3>
 
-        <p className="text-gray-700 text-lg sm:text-xl text-center mb-8 max-w-4xl">
+        <p className="text-gray-700 dark:text-gray-200 text-lg sm:text-xl text-center mb-8 max-w-4xl">
           We’ve curated some of the best resources to help you with scholarship hunting, preparing application documents, and more!
         </p>
 
@@ -215,11 +211,11 @@ export default function CounselingPage() {
               description: "Check the latest visa requirements for international students.",
             },
           ].map(({ title, link, description }, i) => (
-            <div key={i} className="flex flex-col items-start p-8 bg-white shadow-md rounded-lg">
+            <div key={i} className="flex flex-col items-start p-8 bg-white dark:bg-gray-900 shadow-md rounded-lg">
               <a href={link} target="_blank" rel="noopener noreferrer" className="text-xl font-bold text-purple-700 hover:text-purple-900 mb-4">
                 {title}
               </a>
-              <p className="text-gray-600 text-base">{description}</p>
+              <p className="text-gray-600 dark:text-gray-400 text-base">{description}</p>
             </div>
           ))}
         </div>

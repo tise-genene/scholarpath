@@ -26,9 +26,9 @@ export default function ContactPage() {
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-blue-100 via-white to-purple-100 flex items-center justify-center py-16 px-6">
+    <section className="min-h-screen bg-gradient-to-br from-blue-100 via-white to-purple-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center py-16 px-6">
       <motion.div
-        className="w-full max-w-2xl bg-white rounded-3xl shadow-2xl p-10 relative overflow-hidden"
+        className="w-full max-w-2xl bg-white dark:bg-gray-900 rounded-3xl shadow-2xl p-10 relative overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -40,14 +40,14 @@ export default function ContactPage() {
 
         {/* Heading */}
         <motion.h2
-          className="text-4xl font-extrabold text-center text-blue-800 mb-3"
+          className="text-4xl font-extrabold text-center text-blue-800 dark:text-blue-200 mb-3"
           variants={itemVariants}
         >
-          Get in <span className="text-purple-600">Touch with me</span>
+          Get in <span className="text-purple-600 dark:text-purple-300">Touch with me</span>
         </motion.h2>
 
         <motion.p
-          className="text-center text-gray-600 mb-8 text-sm sm:text-base"
+          className="text-center text-gray-600 dark:text-gray-300 mb-8 text-sm sm:text-base"
           variants={itemVariants}
         >
           We'd love to hear from you! Send us a message below.
@@ -60,35 +60,35 @@ export default function ContactPage() {
           variants={itemVariants}
         >
           <motion.div variants={itemVariants}>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
               Name
             </label>
             <input
               type="text"
               required
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-50"
+              className="w-full border border-gray-300 dark:border-gray-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-50 dark:bg-gray-800"
             />
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
               Email
             </label>
             <input
               type="email"
               required
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-50"
+              className="w-full border border-gray-300 dark:border-gray-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-50 dark:bg-gray-800"
             />
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
               Message
             </label>
             <textarea
               rows={4}
               required
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-50"
+              className="w-full border border-gray-300 dark:border-gray-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-50 dark:bg-gray-800"
             ></textarea>
           </motion.div>
 

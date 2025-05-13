@@ -107,9 +107,9 @@ export default function ScholarshipsPage() {
   });
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#191919] text-gray-900 dark:text-gray-100">
+    <div className="min-h-screen bg-white dark:bg-gray-900 dark:bg-[#191919] text-gray-900 dark:text-gray-100">
       {/* Hero Section */}
-      <section className="relative py-24 px-6 sm:px-10 bg-white dark:bg-[#191919] overflow-hidden">
+      <section className="relative py-24 px-6 sm:px-10 bg-white dark:bg-gray-900 dark:bg-[#191919] overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-[0.03]"></div>
 
         <div className="relative z-10 max-w-6xl mx-auto text-center">
@@ -123,7 +123,7 @@ export default function ScholarshipsPage() {
           </motion.h1>
           
           <motion.p 
-            className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-10"
+            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -133,7 +133,7 @@ export default function ScholarshipsPage() {
 
           {/* Search Bar */}
           <motion.div 
-            className="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-2 flex flex-col sm:flex-row gap-2"
+            className="max-w-3xl mx-auto bg-white dark:bg-gray-900 rounded-xl shadow-lg p-2 flex flex-col sm:flex-row gap-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -164,19 +164,19 @@ export default function ScholarshipsPage() {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <button 
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${filters.level === 'Undergraduate' ? 'bg-purple-100 text-purple-700' : 'bg-white text-gray-700 hover:bg-gray-50'}`}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${filters.level === 'Undergraduate' ? 'bg-purple-100 text-purple-700 dark:text-purple-300' : 'bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:bg-gray-800'}`}
               onClick={() => setFilters({...filters, level: filters.level === 'Undergraduate' ? '' : 'Undergraduate'})}
             >
               🎓 Undergraduate
             </button>
             <button 
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${filters.level === 'Graduate' ? 'bg-blue-100 text-blue-700' : 'bg-white text-gray-700 hover:bg-gray-50'}`}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${filters.level === 'Graduate' ? 'bg-blue-100 text-blue-700' : 'bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:bg-gray-800'}`}
               onClick={() => setFilters({...filters, level: filters.level === 'Graduate' ? '' : 'Graduate'})}
             >
               📚 Graduate
             </button>
             <button 
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${filters.country === 'USA' ? 'bg-red-100 text-red-700' : 'bg-white text-gray-700 hover:bg-gray-50'}`}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${filters.country === 'USA' ? 'bg-red-100 text-red-700' : 'bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:bg-gray-800'}`}
               onClick={() => setFilters({...filters, country: filters.country === 'USA' ? '' : 'USA'})}
             >
               🇺🇸 US Universities
@@ -186,7 +186,7 @@ export default function ScholarshipsPage() {
       </section>
 
       {/* Scholarships Grid */}
-      <section className="py-20 px-6 sm:px-10 bg-white dark:bg-[#191919]" ref={ref}>
+      <section className="py-20 px-6 sm:px-10 bg-white dark:bg-gray-900 dark:bg-[#191919]" ref={ref}>
         <div className="max-w-7xl mx-auto">
           <motion.div 
             className="text-center mb-16"
@@ -195,7 +195,7 @@ export default function ScholarshipsPage() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Available Scholarships</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Browse through our curated list of scholarships from top institutions worldwide.
             </p>
           </motion.div>
@@ -204,13 +204,13 @@ export default function ScholarshipsPage() {
             {filteredScholarships.map((scholarship, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-transform transform hover:scale-105 flex flex-col justify-between"
+                className="bg-white dark:bg-gray-900 dark:bg-gray-800 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-transform transform hover:scale-105 flex flex-col justify-between"
               >
                 <div>
                   <h3 className="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-2">{scholarship.title}</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">{scholarship.description}</p>
+                  <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-4">{scholarship.description}</p>
 
-                  <ul className="text-gray-600 dark:text-gray-400 space-y-2">
+                  <ul className="text-gray-600 dark:text-gray-400 dark:text-gray-400 space-y-2">
                     <li><strong>Deadline:</strong> {scholarship.deadline}</li>
                     <li><strong>Amount:</strong> ${scholarship.amount}</li>
                     <li><strong>Country:</strong> {scholarship.country}</li>
@@ -236,7 +236,7 @@ export default function ScholarshipsPage() {
       <section className="py-20 px-6 sm:px-10 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/10 dark:to-blue-900/10">
         <div className="max-w-6xl mx-auto text-center">
           <motion.h2
-            className="text-4xl sm:text-5xl font-extrabold text-blue-900 mb-10"
+            className="text-4xl sm:text-5xl font-extrabold text-blue-900 dark:text-blue-200 mb-10"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -254,13 +254,13 @@ export default function ScholarshipsPage() {
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition hover:scale-105"
+                className="bg-white dark:bg-gray-900 rounded-xl shadow-md p-6 hover:shadow-xl transition hover:scale-105"
                 whileHover={{ scale: 1.05 }}
               >
                 <h3 className="text-xl font-semibold mb-2">
                   {item.flag} {item.country}
                 </h3>
-                <p className="text-gray-700 text-sm">{item.description}</p>
+                <p className="text-gray-700 dark:text-gray-200 text-sm">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -268,7 +268,7 @@ export default function ScholarshipsPage() {
       </section>
 
       {/* How We Help Section */}
-      <div className="py-20 px-6 sm:px-10 bg-white dark:bg-[#191919] text-gray-900 dark:text-gray-100">
+      <div className="py-20 px-6 sm:px-10 bg-white dark:bg-gray-900 dark:bg-[#191919] text-gray-900 dark:text-gray-100">
         <div className="max-w-6xl mx-auto text-center">
           <motion.h2
             className="text-4xl sm:text-5xl font-extrabold text-purple-800 dark:text-purple-400 mb-10"
@@ -293,7 +293,7 @@ export default function ScholarshipsPage() {
                 whileHover={{ scale: 1.05 }}
               >
                 <h3 className="text-lg font-bold text-purple-800 dark:text-purple-300 mb-2">{item.title}</h3>
-                <p className="text-gray-700 dark:text-gray-300 text-sm">{item.desc}</p>
+                <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 text-sm">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -301,7 +301,7 @@ export default function ScholarshipsPage() {
       </div>
 
       {/* Success Stories Section */}
-      <section className="py-20 px-6 sm:px-10 bg-white dark:bg-[#191919]">
+      <section className="py-20 px-6 sm:px-10 bg-white dark:bg-gray-900 dark:bg-[#191919]">
         <div className="max-w-6xl mx-auto text-center">
           <motion.h2
             className="text-4xl sm:text-5xl font-extrabold text-pink-700 dark:text-pink-400 mb-12"
@@ -336,7 +336,7 @@ export default function ScholarshipsPage() {
             ].map((story, index) => (
               <motion.div
                 key={index}
-                className="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 text-left hover:shadow-xl transition hover:scale-105"
+                className="bg-white dark:bg-gray-900 dark:bg-gray-800 rounded-2xl shadow-md p-6 text-left hover:shadow-xl transition hover:scale-105"
                 whileHover={{ scale: 1.03 }}
               >
                 <div className="flex items-center gap-4 mb-4">
@@ -350,7 +350,7 @@ export default function ScholarshipsPage() {
                     <p className="text-sm text-gray-500 dark:text-gray-400">{story.country}</p>
                   </div>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300 italic">"{story.quote}"</p>
+                <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 italic">"{story.quote}"</p>
               </motion.div>
             ))}
           </div>
