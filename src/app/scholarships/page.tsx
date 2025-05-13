@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Search, Award, Globe, BookOpen } from "lucide-react";
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 
 interface Scholarship {
   title: string;
@@ -107,14 +108,14 @@ export default function ScholarshipsPage() {
   });
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 dark:bg-[#191919] text-gray-900 dark:text-gray-100">
+    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       {/* Hero Section */}
-      <section className="relative py-24 px-6 sm:px-10 bg-white dark:bg-gray-900 dark:bg-[#191919] overflow-hidden">
+      <section className="relative py-24 px-6 sm:px-10 bg-white dark:bg-gray-900 overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-[0.03]"></div>
 
         <div className="relative z-10 max-w-6xl mx-auto text-center">
           <motion.h1 
-            className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-blue-600 mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-purple-700 dark:text-purple-300 mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -186,7 +187,7 @@ export default function ScholarshipsPage() {
       </section>
 
       {/* Scholarships Grid */}
-      <section className="py-20 px-6 sm:px-10 bg-white dark:bg-gray-900 dark:bg-[#191919]" ref={ref}>
+      <section className="py-20 px-6 sm:px-10 bg-white dark:bg-gray-900" ref={ref}>
         <div className="max-w-7xl mx-auto">
           <motion.div 
             className="text-center mb-16"
@@ -202,38 +203,41 @@ export default function ScholarshipsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {filteredScholarships.map((scholarship, index) => (
-              <div
-                key={index}
-                className="bg-white dark:bg-gray-900 dark:bg-gray-800 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-transform transform hover:scale-105 flex flex-col justify-between"
-              >
-                <div>
-                  <h3 className="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-2">{scholarship.title}</h3>
-                  <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-4">{scholarship.description}</p>
-
-                  <ul className="text-gray-600 dark:text-gray-400 dark:text-gray-400 space-y-2">
-                    <li><strong>Deadline:</strong> {scholarship.deadline}</li>
-                    <li><strong>Amount:</strong> ${scholarship.amount}</li>
-                    <li><strong>Country:</strong> {scholarship.country}</li>
-                    <li><strong>Level:</strong> {scholarship.level}</li>
-                  </ul>
-                </div>
-
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-6 inline-block bg-purple-700 hover:bg-purple-800 text-white text-center py-3 px-6 rounded-full font-bold transition duration-300 dark:bg-purple-600 dark:hover:bg-purple-700"
-                >
-                  Apply Now
-                </a>
-              </div>
+              <Card key={index} className="transition-transform hover:scale-105 flex flex-col justify-between">
+  <CardHeader>
+    <CardTitle className="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-2">
+      {scholarship.title}
+    </CardTitle>
+    <CardDescription className="mb-4 text-gray-700 dark:text-gray-200">
+      {scholarship.description}
+    </CardDescription>
+  </CardHeader>
+  <div className="px-6 pb-4">
+    <ul className="text-gray-600 dark:text-gray-400 space-y-2">
+      <li><strong>Deadline:</strong> {scholarship.deadline}</li>
+      <li><strong>Amount:</strong> ${scholarship.amount}</li>
+      <li><strong>Country:</strong> {scholarship.country}</li>
+      <li><strong>Level:</strong> {scholarship.level}</li>
+    </ul>
+  </div>
+  <CardFooter className="px-6 pt-0">
+    <a
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-full bg-purple-700 hover:bg-purple-800 text-white text-center py-3 px-6 rounded-full font-bold transition duration-300 dark:bg-purple-600 dark:hover:bg-purple-700"
+    >
+      Apply Now
+    </a>
+  </CardFooter>
+</Card>
             ))}
           </div>
         </div>
       </section>
 
       {/* Top Study Destinations Section */}
-      <section className="py-20 px-6 sm:px-10 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/10 dark:to-blue-900/10">
+      <section className="py-20 px-6 sm:px-10 bg-white dark:bg-gray-900">
         <div className="max-w-6xl mx-auto text-center">
           <motion.h2
             className="text-4xl sm:text-5xl font-extrabold text-blue-900 dark:text-blue-200 mb-10"

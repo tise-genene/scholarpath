@@ -7,9 +7,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative z-10 bg-gradient-to-br from-purple-950 via-purple-800 to-indigo-900 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 text-white px-6 py-16 overflow-hidden border-t-2 border-white/20 dark:border-gray-700/70">
+    <footer className="relative z-10 bg-purple-950 dark:bg-gray-950 text-white px-6 py-16 overflow-hidden border-t-2 border-white/20 dark:border-gray-700/70">
       {/* Glow/Blur Background */}
-      <div className="absolute inset-0 blur-2xl opacity-30 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-pink-500 via-purple-500 to-indigo-500"></div>
+      
 
       <div className="relative max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-sm">
         {/* Brand */}

@@ -2,10 +2,11 @@
 
 import { motion } from "framer-motion";
 import { FaCalendarAlt, FaClock, FaVideo } from "react-icons/fa";
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 
 export default function WebinarPage() {
   return (
-    <section className="min-h-screen w-full py-16 px-4 md:px-10 bg-gradient-to-br from-blue-200 via-purple-100 to-pink-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden">
+    <section className="min-h-screen w-full py-16 px-4 md:px-10 bg-white dark:bg-gray-900 relative overflow-hidden">
       {/* Soft Glows */}
       <div className="absolute top-10 left-10 w-40 h-40 bg-purple-300 opacity-30 rounded-full blur-2xl z-0" />
       <div className="absolute bottom-10 right-10 w-48 h-48 bg-blue-300 opacity-40 rounded-full blur-3xl z-0" />
@@ -87,52 +88,67 @@ export default function WebinarPage() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {/* Card 1 */}
-          <motion.div
-            className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg"
-            whileHover={{ scale: 1.02 }}
-          >
-            <h4 className="font-semibold text-purple-700 dark:text-purple-300 mb-2">How to Write a Winning Motivation Letter</h4>
-            <p className="text-gray-800 dark:text-gray-100 mb-4">Learn the best strategies to write a compelling motivation letter that grabs attention and makes you unforgettable.</p>
-            <p className="text-gray-700 dark:text-gray-200">April 30, 2025 - 4:00 PM (GMT+3)</p>
-            <a
-              href="#register"
-              className="bg-purple-600 text-white px-6 py-2 rounded-full mt-4 inline-block hover:bg-purple-700"
-            >
-              Register Now
-            </a>
-          </motion.div>
+          <Card className="transition-transform hover:scale-105">
+  <CardHeader>
+    <CardTitle className="font-semibold text-purple-700 dark:text-purple-300 mb-2">
+      How to Write a Winning Motivation Letter
+    </CardTitle>
+    <CardDescription className="mb-4 text-gray-800 dark:text-gray-100">
+      Learn the best strategies to write a compelling motivation letter that grabs attention and makes you unforgettable.
+    </CardDescription>
+    <div className="text-gray-700 dark:text-gray-200">April 30, 2025 - 4:00 PM (GMT+3)</div>
+  </CardHeader>
+  <CardFooter>
+    <a
+      href="#register"
+      className="bg-purple-600 text-white px-6 py-2 rounded-full mt-4 inline-block hover:bg-purple-700 w-full text-center"
+    >
+      Register Now
+    </a>
+  </CardFooter>
+</Card>
 
           {/* Card 2 */}
-          <motion.div
-            className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg"
-            whileHover={{ scale: 1.02 }}
-          >
-            <h4 className="font-semibold text-purple-700 dark:text-purple-300 mb-2">Scholarship Application Tips</h4>
-            <p className="text-gray-800 dark:text-gray-100 mb-4">Master the scholarship application process with insider tips and best practices that can make your application shine brighter.</p>
-            <p className="text-gray-700 dark:text-gray-200">May 5, 2025 - 5:00 PM (GMT+3)</p>
-            <a
-              href="#register"
-              className="bg-purple-600 text-white px-6 py-2 rounded-full mt-4 inline-block hover:bg-purple-700"
-            >
-              Register Now
-            </a>
-          </motion.div>
+          <Card className="transition-transform hover:scale-105">
+  <CardHeader>
+    <CardTitle className="font-semibold text-purple-700 dark:text-purple-300 mb-2">
+      Scholarship Application Tips
+    </CardTitle>
+    <CardDescription className="mb-4 text-gray-800 dark:text-gray-100">
+      Master the scholarship application process with insider tips and best practices that can make your application shine brighter.
+    </CardDescription>
+    <div className="text-gray-700 dark:text-gray-200">May 5, 2025 - 5:00 PM (GMT+3)</div>
+  </CardHeader>
+  <CardFooter>
+    <a
+      href="#register"
+      className="bg-purple-600 text-white px-6 py-2 rounded-full mt-4 inline-block hover:bg-purple-700 w-full text-center"
+    >
+      Register Now
+    </a>
+  </CardFooter>
+</Card>
 
           {/* Card 3 */}
-          <motion.div
-            className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg"
-            whileHover={{ scale: 1.02 }}
-          >
-            <h4 className="font-semibold text-purple-700 dark:text-purple-300 mb-2">Navigating the Scholarship Interview</h4>
-            <p className="text-gray-800 dark:text-gray-100 mb-4">Prepare confidently for your scholarship interview with expert insights, mock questions, and practical techniques.</p>
-            <p className="text-gray-700 dark:text-gray-200">May 12, 2025 - 4:00 PM (GMT+3)</p>
-            <a
-              href="#register"
-              className="bg-purple-600 text-white px-6 py-2 rounded-full mt-4 inline-block hover:bg-purple-700"
-            >
-              Register Now
-            </a>
-          </motion.div>
+          <Card className="transition-transform hover:scale-105">
+  <CardHeader>
+    <CardTitle className="font-semibold text-purple-700 dark:text-purple-300 mb-2">
+      Navigating the Scholarship Interview
+    </CardTitle>
+    <CardDescription className="mb-4 text-gray-800 dark:text-gray-100">
+      Prepare confidently for your scholarship interview with expert insights, mock questions, and practical techniques.
+    </CardDescription>
+    <div className="text-gray-700 dark:text-gray-200">May 12, 2025 - 4:00 PM (GMT+3)</div>
+  </CardHeader>
+  <CardFooter>
+    <a
+      href="#register"
+      className="bg-purple-600 text-white px-6 py-2 rounded-full mt-4 inline-block hover:bg-purple-700 w-full text-center"
+    >
+      Register Now
+    </a>
+  </CardFooter>
+</Card>
         </div>
       </motion.div>
 
@@ -154,49 +170,64 @@ export default function WebinarPage() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {/* Past Card 1 */}
-          <motion.div
-            className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg"
-            whileHover={{ scale: 1.02 }}
-          >
-            <h4 className="font-semibold text-purple-700 dark:text-purple-300 mb-2">Scholarship Application Tips</h4>
-            <p className="text-gray-800 dark:text-gray-100 mb-4">Replay our top strategies for acing scholarship applications and boosting your chances of standing out!</p>
-            <a
-              href="#replay1"
-              className="bg-purple-600 text-white px-6 py-2 rounded-full mt-4 inline-block hover:bg-purple-700"
-            >
-              Watch Replay
-            </a>
-          </motion.div>
+          <Card className="transition-transform hover:scale-105">
+  <CardHeader>
+    <CardTitle className="font-semibold text-purple-700 dark:text-purple-300 mb-2">
+      Scholarship Application Tips
+    </CardTitle>
+    <CardDescription className="mb-4 text-gray-800 dark:text-gray-100">
+      Replay our top strategies for acing scholarship applications and boosting your chances of standing out!
+    </CardDescription>
+  </CardHeader>
+  <CardFooter>
+    <a
+      href="#replay1"
+      className="bg-purple-600 text-white px-6 py-2 rounded-full mt-4 inline-block hover:bg-purple-700 w-full text-center"
+    >
+      Watch Replay
+    </a>
+  </CardFooter>
+</Card>
 
           {/* Past Card 2 */}
-          <motion.div
-            className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg"
-            whileHover={{ scale: 1.02 }}
-          >
-            <h4 className="font-semibold text-purple-700 dark:text-purple-300 mb-2">Writing a Winning CV</h4>
-            <p className="text-gray-800 dark:text-gray-100 mb-4">Discover how to craft a CV that tells your unique story and leaves a lasting impression on review committees.</p>
-            <a
-              href="#replay2"
-              className="bg-purple-600 text-white px-6 py-2 rounded-full mt-4 inline-block hover:bg-purple-700"
-            >
-              Watch Replay
-            </a>
-          </motion.div>
+          <Card className="transition-transform hover:scale-105">
+  <CardHeader>
+    <CardTitle className="font-semibold text-purple-700 dark:text-purple-300 mb-2">
+      Writing a Winning CV
+    </CardTitle>
+    <CardDescription className="mb-4 text-gray-800 dark:text-gray-100">
+      Discover how to craft a CV that tells your unique story and leaves a lasting impression on review committees.
+    </CardDescription>
+  </CardHeader>
+  <CardFooter>
+    <a
+      href="#replay2"
+      className="bg-purple-600 text-white px-6 py-2 rounded-full mt-4 inline-block hover:bg-purple-700 w-full text-center"
+    >
+      Watch Replay
+    </a>
+  </CardFooter>
+</Card>
 
           {/* Past Card 3 */}
-          <motion.div
-            className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg"
-            whileHover={{ scale: 1.02 }}
-          >
-            <h4 className="font-semibold text-purple-700 dark:text-purple-300 mb-2">Choosing the Right Scholarship</h4>
-            <p className="text-gray-800 dark:text-gray-100 mb-4">Replay and learn how to align your goals and strengths with the scholarships that fit you best.</p>
-            <a
-              href="#replay3"
-              className="bg-purple-600 text-white px-6 py-2 rounded-full mt-4 inline-block hover:bg-purple-700"
-            >
-              Watch Replay
-            </a>
-          </motion.div>
+          <Card className="transition-transform hover:scale-105">
+  <CardHeader>
+    <CardTitle className="font-semibold text-purple-700 dark:text-purple-300 mb-2">
+      Choosing the Right Scholarship
+    </CardTitle>
+    <CardDescription className="mb-4 text-gray-800 dark:text-gray-100">
+      Replay and learn how to align your goals and strengths with the scholarships that fit you best.
+    </CardDescription>
+  </CardHeader>
+  <CardFooter>
+    <a
+      href="#replay3"
+      className="bg-purple-600 text-white px-6 py-2 rounded-full mt-4 inline-block hover:bg-purple-700 w-full text-center"
+    >
+      Watch Replay
+    </a>
+  </CardFooter>
+</Card>
         </div>
       </motion.div>
 

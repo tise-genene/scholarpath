@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaUserGraduate, FaCalendarCheck, FaComments, FaMoneyCheckAlt, FaFileAlt, FaGlobeEurope } from "react-icons/fa";
+import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 export default function CounselingPage() {
   return (
@@ -43,15 +44,13 @@ export default function CounselingPage() {
               desc: "Talk with experienced scholarship mentors.",
             },
           ].map(({ Icon, title, desc }, i) => (
-            <motion.div
-              key={i}
-              className="w-full sm:w-80 bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 text-center transition-all duration-300 hover:scale-105"
-              whileHover={{ scale: 1.05 }}
-            >
-              <Icon className="text-purple-600 dark:text-purple-300 text-5xl mb-4" />
-              <h4 className="text-2xl font-semibold text-purple-800 dark:text-purple-300 mb-2">{title}</h4>
-              <p className="text-gray-600 dark:text-gray-400 text-lg">{desc}</p>
-            </motion.div>
+            <Card key={i} className="w-full sm:w-80 text-center transition-all duration-300 hover:scale-105">
+  <CardHeader>
+    <Icon className="text-purple-600 dark:text-purple-300 text-5xl mb-4 mx-auto" />
+    <CardTitle className="text-2xl font-semibold text-purple-800 dark:text-purple-300 mb-2">{title}</CardTitle>
+    <CardDescription className="text-lg text-gray-600 dark:text-gray-400">{desc}</CardDescription>
+  </CardHeader>
+</Card>
           ))}
         </div>
 
@@ -121,22 +120,20 @@ export default function CounselingPage() {
               desc: "Fast-track services for urgent applications and deadlines.",
             },
           ].map(({ Icon, title, desc }, i) => (
-            <motion.div
-              key={i}
-              className="w-full sm:w-80 bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 text-center transition-all duration-300 hover:scale-105"
-              whileHover={{ scale: 1.04 }}
-            >
-              <Icon className="text-purple-600 dark:text-purple-300 text-5xl mb-4" />
-              <h4 className="text-2xl font-semibold text-purple-800 dark:text-purple-300 mb-2">{title}</h4>
-              <p className="text-gray-600 dark:text-gray-400 text-base">{desc}</p>
-            </motion.div>
+            <Card key={i} className="w-full sm:w-80 text-center transition-all duration-300 hover:scale-105">
+  <CardHeader>
+    <Icon className="text-purple-600 dark:text-purple-300 text-5xl mb-4 mx-auto" />
+    <CardTitle className="text-2xl font-semibold text-purple-800 dark:text-purple-300 mb-2">{title}</CardTitle>
+    <CardDescription className="text-base text-gray-600 dark:text-gray-400">{desc}</CardDescription>
+  </CardHeader>
+</Card>
           ))}
         </div>
       </motion.div>
 
       {/* Testimonials Section */}
       <motion.div
-        className="w-full mt-20 bg-gradient-to-b from-purple-100 to-white dark:from-gray-900 dark:to-gray-900 px-6 md:px-24 py-12"
+        className="w-full mt-20 bg-white dark:bg-gray-900 px-6 md:px-24 py-12"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -166,11 +163,13 @@ export default function CounselingPage() {
               location: "Toronto, Canada",
             },
           ].map((testimonial, i) => (
-            <div key={i} className="w-80 sm:w-96 bg-white dark:bg-gray-900 shadow-lg p-8 rounded-lg text-center">
-              <p className="text-xl font-medium text-gray-600 dark:text-gray-400 mb-4">{testimonial.quote}</p>
-              <p className="text-lg font-bold text-purple-700 dark:text-purple-300">{testimonial.name}</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">{testimonial.location}</p>
-            </div>
+            <Card key={i} className="w-80 sm:w-96 text-center">
+  <CardHeader>
+    <CardDescription className="text-xl font-medium text-gray-600 dark:text-gray-400 mb-4">{testimonial.quote}</CardDescription>
+    <CardTitle className="text-lg font-bold text-purple-700 dark:text-purple-300">{testimonial.name}</CardTitle>
+    <div className="text-sm text-gray-500 dark:text-gray-400">{testimonial.location}</div>
+  </CardHeader>
+</Card>
           ))}
         </div>
       </motion.div>
@@ -194,32 +193,53 @@ export default function CounselingPage() {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-          {[ 
-            {
-              title: "Scholarship Search Engines",
-              link: "https://www.scholarships.com",
-              description: "Discover thousands of scholarships worldwide with this helpful search engine.",
-            },
-            {
-              title: "Free Online Courses",
-              link: "https://www.edx.org",
-              description: "Enhance your skills with free courses from top universities.",
-            },
-            {
-              title: "Visa Requirements by Country",
-              link: "https://www.visatracker.com",
-              description: "Check the latest visa requirements for international students.",
-            },
-          ].map(({ title, link, description }, i) => (
-            <div key={i} className="flex flex-col items-start p-8 bg-white dark:bg-gray-900 shadow-md rounded-lg">
-              <a href={link} target="_blank" rel="noopener noreferrer" className="text-xl font-bold text-purple-700 hover:text-purple-900 mb-4">
-                {title}
-              </a>
-              <p className="text-gray-600 dark:text-gray-400 text-base">{description}</p>
-            </div>
-          ))}
-        </div>
-      </motion.div>
-    </section>
+          {[
+  {
+    title: "Scholarship Search Engines",
+    link: "https://www.scholarships.com",
+    description: "Discover thousands of scholarships worldwide with this helpful search engine.",
+  },
+  {
+    title: "Free Online Courses",
+    link: "https://www.edx.org",
+    description: "Enhance your skills with free courses from top universities.",
+  },
+  {
+    title: "Document Templates",
+    link: "https://www.overleaf.com/latex/templates/tagged/scholarship",
+    description: "Access ready-to-use templates for CVs, motivation letters, and more.",
+  },
+  {
+    title: "Visa Information",
+    link: "https://www.schengenvisainfo.com/",
+    description: "Get up-to-date information on student visas and application requirements.",
+  },
+  {
+    title: "International Fee Payment",
+    link: "https://wise.com/",
+    description: "Transfer money abroad easily and pay university fees with low rates.",
+  },
+  {
+    title: "Scholarship Forums",
+    link: "https://www.reddit.com/r/scholarships/",
+    description: "Connect with other students and get advice on scholarships and applications.",
+  },
+].map((resource, i) => (
+  <Card key={i} className="w-full sm:w-80 transition-all duration-300 hover:scale-105">
+    <CardHeader>
+      <CardTitle className="text-lg font-semibold text-blue-900 dark:text-blue-200 mb-2">
+        <a href={resource.link} target="_blank" rel="noopener noreferrer" className="hover:underline">
+          {resource.title}
+        </a>
+      </CardTitle>
+      <CardDescription className="text-base text-gray-600 dark:text-gray-400">
+        {resource.description}
+      </CardDescription>
+    </CardHeader>
+  </Card>
+))}
+</div>
+</motion.div>
+</section>
   );
 }

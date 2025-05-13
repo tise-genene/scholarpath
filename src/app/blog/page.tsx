@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
+import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 
 const SAMPLE_POSTS = [
   {
@@ -115,34 +116,30 @@ export default function BlogPage() {
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {SAMPLE_POSTS.map((post) => (
-              <motion.article
-                key={post.id}
-                whileHover={{ y: -5 }}
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all flex flex-col h-full"
-              >
-                <div className="relative h-48 w-full">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    className="object-cover"
-                    priority={post.id === 1}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <span className="inline-block bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 text-xs font-semibold px-3 py-1 rounded-full mb-3 self-start">
-                    {post.category}
-                  </span>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{post.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 flex-grow">{post.excerpt}</p>
-                  <div className="flex items-center justify-between text-sm pt-4 border-t border-gray-100 dark:border-gray-700">
-                    <span className="text-gray-500 dark:text-gray-400">{post.date}</span>
-                    <span className="text-purple-600 dark:text-purple-400 font-medium">{post.readingTime}</span>
-                  </div>
-                </div>
-              </motion.article>
-            ))}
+  <Card key={post.id} className="flex flex-col h-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all">
+    <div className="relative h-48 w-full">
+      <Image
+        src={post.image}
+        alt={post.title}
+        fill
+        className="object-cover"
+        priority={post.id === 1}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      />
+    </div>
+    <CardHeader className="p-6 flex-1 flex flex-col">
+      <span className="inline-block bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 text-xs font-semibold px-3 py-1 rounded-full mb-3 self-start">
+        {post.category}
+      </span>
+      <CardTitle className="text-xl font-bold text-gray-900 dark:text-white mb-3">{post.title}</CardTitle>
+      <CardDescription className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 flex-grow">{post.excerpt}</CardDescription>
+      <div className="flex items-center justify-between text-sm pt-4 border-t border-gray-100 dark:border-gray-700">
+        <span className="text-gray-500 dark:text-gray-400">{post.date}</span>
+        <span className="text-purple-600 dark:text-purple-400 font-medium">{post.readingTime}</span>
+      </div>
+    </CardHeader>
+  </Card>
+))}
           </div>
         </div>
       </section>

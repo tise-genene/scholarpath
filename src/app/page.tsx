@@ -33,12 +33,12 @@ export default function Page() {
 
 
   return (
-    <main className="relative min-h-screen bg-white dark:bg-gray-900 dark:bg-gray-900">
+    <main className="relative min-h-screen bg-white dark:bg-gray-900">
 
       {/* Hero Section */}
       <section className="relative min-h-screen bg-white dark:bg-gray-950 overflow-hidden">
         {/* Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-950 dark:to-gray-900"></div>
+        
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center py-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -48,7 +48,7 @@ export default function Page() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-purple-100 dark:bg-purple-900/30 mb-8 shadow-lg"
+                className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-purple-100 dark:bg-gray-900 mb-8 shadow-lg"
               >
                 <Search className="w-8 h-8 text-purple-600 dark:text-purple-400" />
               </motion.div>
@@ -326,7 +326,7 @@ export default function Page() {
             { q: "Can I get personal counseling?", a: "Absolutely! Our experts are available for one-on-one counseling sessions." },
             { q: "How do I know if I'm eligible for a scholarship?", a: "Our matching system only shows scholarships you are eligible for based on your profile." },
           ].map((faq, i) => (
-            <div key={i} className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-gray-900 dark:to-gray-900 rounded-xl p-6 shadow">
+            <div key={i} className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow">
               <h3 className="font-semibold text-lg mb-2 text-purple-700 dark:text-purple-300">{faq.q}</h3>
               <p className="text-gray-700 dark:text-gray-200">{faq.a}</p>
             </div>

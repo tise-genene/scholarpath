@@ -26,7 +26,7 @@ export default function ContactPage() {
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-blue-100 via-white to-purple-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center py-16 px-6">
+    <section className="min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center py-16 px-6">
       <motion.div
         className="w-full max-w-2xl bg-white dark:bg-gray-900 rounded-3xl shadow-2xl p-10 relative overflow-hidden"
         initial="hidden"
@@ -94,7 +94,7 @@ export default function ContactPage() {
 
           <motion.button
             type="submit"
-            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-bold hover:from-blue-700 hover:to-purple-700 transition duration-300 shadow-lg"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-bold transition duration-300 shadow-lg"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
           >
