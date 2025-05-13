@@ -1,265 +1,396 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Footer from "@/components/Footer";
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
+// Dynamic imports for non-critical components
+const DynamicFaqItem = ({ faq, index }: { faq: { q: string; a: string }, index: number }) => (
+  <motion.div 
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ delay: index * 0.1 }}
+    className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
+  >
+    <h4 className="font-semibold text-purple-700 dark:text-purple-400 mb-2 text-lg">{faq.q}</h4>
+    <p className="text-gray-700 dark:text-gray-300">{faq.a}</p>
+  </motion.div>
+);
 
 export default function AboutMe() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
   return (
     <>
-      <section className="relative min-h-screen w-screen flex flex-col items-center justify-start px-4 sm:px-10 py-16 bg-gradient-to-br from-blue-200 via-purple-100 to-pink-200 overflow-hidden">
-        {/* Glowing Effects */}
-        <div className="absolute top-[-5rem] left-[-5rem] w-[400px] h-[400px] bg-blue-300 opacity-30 rounded-full blur-3xl z-0" />
-        <div className="absolute bottom-[-5rem] right-[-5rem] w-[500px] h-[500px] bg-pink-400 opacity-40 rounded-full blur-3xl z-0" />
-
-        {/* Content */}
-        <motion.div
-          className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-12 bg-white/80 backdrop-blur-md p-10 rounded-3xl shadow-inner"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={containerVariants}
+      <section className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-16 bg-white dark:bg-gray-900">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-12 bg-white dark:bg-gray-800 p-6 sm:p-8 md:p-12 rounded-2xl shadow-xl"
         >
           {/* Text Section */}
-          <motion.div className="space-y-6" variants={itemVariants}>
-            <h2 className="text-4xl font-extrabold text-purple-800">
-              About <span className="text-blue-600">Me</span>
-            </h2>
-            <motion.p
-              className="text-gray-700 text-lg leading-relaxed"
-              variants={itemVariants}
+          <div className="space-y-6">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-purple-700 to-blue-600 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent"
             >
-              Hello! I'm <strong>Tegegn</strong>, a passionate scholarship consultant and
+              About <span className="text-blue-600 dark:text-blue-400">Me</span>
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed"
+            >
+              Hello! I'm <strong className="text-purple-800 dark:text-purple-300 font-semibold">Tegegn</strong>, a passionate scholarship consultant and
               tech enthusiast. I help students unlock international opportunities
               through expert guidance, personalized support, and modern tools.
             </motion.p>
-            <motion.p
-              className="text-gray-600 text-base leading-relaxed"
-              variants={itemVariants}
-            ></motion.p>
-            <motion.button
-              className="bg-purple-700 text-white px-8 py-4 rounded-full font-bold hover:bg-purple-800 transition-all duration-300 shadow-lg"
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 0 20px rgba(128,90,213,0.6)",
-              }}
-              variants={itemVariants}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
             >
-              Contact Me
-            </motion.button>
-          </motion.div>
+              <a
+                href="/contact"
+                className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-3.5 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+              >
+                Contact Me
+              </a>
+            </motion.div>
+          </div>
 
           {/* Image Section */}
-          <motion.div
-            className="flex justify-center"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            whileHover={{ scale: 1.03 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true }}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="flex justify-center relative group"
           >
-            <motion.img
-              src="/tegegn.jpg"
-              alt="About Me"
-              className="rounded-2xl shadow-xl w-full max-w-sm object-cover"
-              animate={{ y: [0, -8, 0] }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
+            <div className="relative w-full max-w-sm h-96 md:h-[28rem] rounded-2xl overflow-hidden shadow-2xl">
+              <Image
+                src="/tegegn.jpg"
+                alt="Tegegn - Scholarship Consultant"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                priority
+                quality={85}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* Extra Section: My Values */}
-      <motion.section
-        className="relative w-screen flex flex-col items-center justify-start px-4 sm:px-10 py-16 bg-white/90 backdrop-blur-md"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={containerVariants}
-      >
-        <motion.h3
-          className="text-4xl sm:text-5xl font-extrabold text-blue-900 text-center mb-10"
-          variants={itemVariants}
-        >
-          🌟 My Values
-        </motion.h3>
+      {/* My Values */}
+      <section className="w-full py-20 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h3 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-700 to-purple-700 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-6">
+              My Values
+            </h3>
 
-        <motion.p
-          className="text-gray-700 text-lg sm:text-xl text-center max-w-3xl mb-12"
-          variants={itemVariants}
-        >
-          I believe in integrity, passion, and empowerment. Every student deserves an opportunity to shine and realize their dreams — and I'm here to make that journey a little easier, one step at a time.
-        </motion.p>
+            <p className="text-gray-700 dark:text-gray-300 text-lg md:text-xl max-w-4xl mx-auto leading-relaxed">
+              I believe in integrity, passion, and empowerment. Every student deserves an opportunity to shine and realize their dreams — and I'm here to make that journey a little easier, one step at a time.
+            </p>
+          </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 w-full max-w-6xl">
-          {[
-            {
-              title: "Integrity",
-              desc: "Honest and transparent",
-            },
-            {
-              title: "Excellence",
-              desc: "Dedicated to providing top-notch consulting tailored to your dreams.",
-            },
-            {
-              title: "Empowerment",
-              desc: "Helping you build the confidence to pursue opportunities worldwide.",
-            },
-          ].map(({ title, desc }, i) => (
-            <motion.div
-              key={i}
-              className="bg-white rounded-2xl shadow-md p-8 flex flex-col items-center text-center hover:shadow-xl transition duration-300"
-              whileHover={{ scale: 1.04 }}
-              variants={itemVariants}
-            >
-              <h4 className="text-2xl font-semibold text-purple-800 mb-2">{title}</h4>
-              <p className="text-gray-600 text-base">{desc}</p>
-            </motion.div>
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Integrity",
+                desc: "Honest and transparent in all my dealings.",
+                icon: "🤝"
+              },
+              {
+                title: "Excellence",
+                desc: "Dedicated to providing top-notch consulting tailored to your dreams.",
+                icon: "✨"
+              },
+              {
+                title: "Empowerment",
+                desc: "Helping you build the confidence to pursue opportunities worldwide.",
+                icon: "🚀"
+              },
+            ].map(({ title, desc, icon }, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
+              >
+                <div className="text-4xl mb-4">{icon}</div>
+                <h4 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">{title}</h4>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* New Section: Study Abroad Destinations */}
-      <motion.section
-        className="relative w-screen flex flex-col items-center justify-start px-4 sm:px-10 py-20 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={containerVariants}
-      >
-        <motion.h3
-          className="text-4xl sm:text-5xl font-extrabold text-blue-800 dark:text-blue-400 text-center mb-10"
-          variants={itemVariants}
-        >
-          🌍 Our Study Abroad Destinations
-        </motion.h3>
+      {/* Study Abroad Destinations */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-14"
+          >
+            <h3 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-700 to-purple-700 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-6">
+              Study Abroad Destinations
+            </h3>
+            <p className="text-gray-700 dark:text-gray-300 text-lg md:text-xl max-w-3xl mx-auto">
+              We help students pursue their dreams in top international education destinations worldwide.
+            </p>
+          </motion.div>
 
-        <motion.p
-          className="text-gray-700 dark:text-gray-300 text-lg sm:text-xl text-center max-w-3xl mb-12"
-          variants={itemVariants}
-        >
-          We help students pursue their dreams in top international destinations.
-        </motion.p>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-5xl w-full">
-          {[
-            "USA",
-            "Canada",
-            "UK",
-            "Germany",
-            
-          ].map((country) => (
-            <motion.div
-              key={country}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-4 text-center font-semibold text-blue-700 dark:text-blue-300 hover:shadow-lg transition"
-              variants={itemVariants}
-            >
-              {country}
-            </motion.div>
-          ))}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            {[
+              { name: "United States", code: "US", emoji: "🇺🇸" },
+              { name: "Canada", code: "CA", emoji: "🇨🇦" },
+              { name: "United Kingdom", code: "GB", emoji: "🇬🇧" },
+              { name: "Germany", code: "DE", emoji: "🇩🇪" },
+              { name: "Australia", code: "AU", emoji: "🇦🇺" },
+              { name: "Japan", code: "JP", emoji: "🇯🇵" },
+              { name: "France", code: "FR", emoji: "🇫🇷" },
+              { name: "Netherlands", code: "NL", emoji: "🇳🇱" },
+            ].map((country, i) => (
+              <motion.div
+                key={country.code}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05, duration: 0.5 }}
+                className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-md hover:shadow-xl transition-all duration-300 group"
+              >
+                <div className="text-4xl mb-3 transform group-hover:scale-110 transition-transform duration-300">
+                  {country.emoji}
+                </div>
+                <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  {country.name}
+                </h4>
+                <span className="text-sm text-purple-600 dark:text-purple-400 font-medium">
+                  {country.code}
+                </span>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </motion.section>
-      <section className="py-20 px-6 sm:px-10 bg-blue-50">
-  <div className="max-w-6xl mx-auto text-center">
-    <h2 className="text-4xl font-bold text-blue-800 mb-10">🎯 What I Offer</h2>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {[
-        { title: "Scholarship Matching", desc: "Personalized scholarship recommendations based on your profile." },
-        { title: "1-on-1 Counseling", desc: "Dedicated sessions to plan your academic journey abroad." },
-        { title: "Application Strategy", desc: "Support with writing essays, building resumes, and interview prep." },
-      ].map((item, i) => (
-        <div key={i} className="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
-          <h3 className="text-xl font-semibold text-purple-700 mb-2">{item.title}</h3>
-          <p className="text-gray-600">{item.desc}</p>
+      </section>
+      {/* What I Offer */}
+      <section className="py-20 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-700 to-purple-700 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-6">
+              What I Offer
+            </h2>
+            <p className="text-gray-700 dark:text-gray-300 text-lg md:text-xl max-w-3xl mx-auto">
+              Comprehensive services designed to guide you through every step of your academic journey
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[ 
+              { 
+                title: "Scholarship Matching", 
+                desc: "Personalized scholarship recommendations based on your profile, academic background, and career goals.",
+                icon: "🎯"
+              },
+              { 
+                title: "1-on-1 Counseling", 
+                desc: "Dedicated sessions to plan your academic journey abroad with expert guidance at every step.",
+                icon: "💡"
+              },
+              { 
+                title: "Application Strategy", 
+                desc: "Comprehensive support with writing compelling essays, building strong resumes, and interview preparation.",
+                icon: "📝"
+              },
+            ].map((item, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className="group relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 dark:bg-purple-400/10 rounded-full -mr-10 -mt-10 transition-all duration-700 group-hover:scale-150" />
+                <div className="text-4xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                  {item.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{item.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{item.desc}</p>
+                <div className="mt-6">
+                  <a 
+                    href="/services" 
+                    className="inline-flex items-center text-purple-600 dark:text-purple-400 font-medium group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors"
+                  >
+                    Learn more
+                    <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
-<motion.section
-  className="py-20 px-6 sm:px-10 bg-gradient-to-r from-purple-50 to-blue-50"
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.7 }}
-  viewport={{ once: true }}
->
-  <div className="max-w-4xl mx-auto text-center">
-    <h2 className="text-4xl font-bold text-purple-800 mb-6">🚀 My Mission</h2>
-    <p className="text-lg text-gray-700 leading-relaxed">
-      My mission is to empower students globally by providing them access to life-changing education opportunities through scholarships, mentorship, and dedicated support.
-    </p>
-  </div>
-</motion.section>
-
-<section className="py-20 px-6 sm:px-10 bg-white">
-  <div className="max-w-4xl mx-auto">
-    <h2 className="text-4xl font-bold text-purple-800 text-center mb-10">❓ Frequently Asked Questions</h2>
-    <div className="space-y-6">
-      {[
-        {
-          q: "Do I need perfect grades to win a scholarship?",
-          a: "Not necessarily. Many scholarships consider leadership, community service, and motivation too.",
-        },
-        {
-          q: "Can you help with non-English speaking countries?",
-          a: "Yes! I assist with scholarships in Germany, China, France, and many more.",
-        },
-        {
-          q: "How early should I start preparing?",
-          a: "Ideally 6–12 months in advance. Early preparation boosts your success rate.",
-        },
-      ].map((faq, i) => (
-        <div key={i} className="bg-purple-50 p-6 rounded-xl shadow">
-          <h4 className="font-semibold text-purple-700 mb-2">{faq.q}</h4>
-          <p className="text-gray-700">{faq.a}</p>
+      </section>
+      
+      <section className="py-20 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-900 dark:to-blue-900/20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 sm:p-12 shadow-xl overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/5 dark:bg-purple-400/10 rounded-full -mr-32 -mt-32" />
+            <div className="relative z-10">
+              <div className="inline-block px-4 py-2 bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium mb-6">
+                My Vision & Mission
+              </div>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight">
+                Empowering the next generation of global leaders through education
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl">
+                My mission is to break down barriers to education by providing students worldwide with access to life-changing scholarship opportunities, personalized mentorship, and the tools they need to succeed in today's competitive academic landscape.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a 
+                  href="/about" 
+                  className="inline-flex items-center px-6 py-3.5 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+                >
+                  Learn more about my journey
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </motion.div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
-<motion.section
-  className="py-20 bg-gradient-to-r from-blue-100 to-purple-200 text-center"
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}
->
-  <div className="max-w-3xl mx-auto">
-    <h2 className="text-4xl font-bold text-purple-900 mb-4">🤝 Let’s Work Together</h2>
-    <p className="text-lg text-gray-800 mb-8">
-      Ready to start your scholarship journey? Let’s connect and make your dream come true!
-    </p>
-    <a
-      href="/contact"
-      className="inline-block bg-purple-700 text-white px-8 py-4 rounded-full text-lg font-semibold shadow hover:bg-purple-800 transition duration-300"
-    >
-      Get in Touch
-    </a>
-  </div>
-</motion.section>
+      </section>
 
+      <section className="py-20 bg-white dark:bg-gray-900">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-700 to-purple-700 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-6">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-gray-700 dark:text-gray-300 text-lg md:text-xl max-w-3xl mx-auto">
+              Find answers to common questions about our services and the scholarship application process
+            </p>
+          </motion.div>
 
-
-
+          <div className="max-w-4xl mx-auto space-y-6">
+            {[
+              {
+                q: "Do I need perfect grades to win a scholarship?",
+                a: "Not necessarily. While academic excellence helps, many scholarships also value leadership, community service, personal essays, and unique experiences. We help highlight your strengths beyond just grades.",
+              },
+              {
+                q: "Can you help with non-English speaking countries?",
+                a: "Absolutely! We assist with scholarships in Germany, France, China, Japan, and many other countries. We can also guide you through language requirements and preparation.",
+              },
+              {
+                q: "How early should I start preparing for scholarship applications?",
+                a: "Ideally, start 12-18 months before your intended study period. This gives you time to research, prepare documents, and meet deadlines. However, we can help with last-minute applications too!",
+              },
+              {
+                q: "What makes your consulting service different?",
+                a: "We offer personalized 1:1 support, have a proven track record, and provide end-to-end guidance. Our approach combines strategic planning with attention to detail in every application.",
+              },
+              {
+                q: "Do you guarantee scholarship success?",
+                a: "While we can't guarantee scholarships (as decisions are made by institutions), we significantly improve your chances through expert guidance, strong applications, and strategic planning.",
+              },
+            ].map((faq, i) => (
+              <DynamicFaqItem key={i} faq={faq} index={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="relative py-24 overflow-hidden bg-gradient-to-br from-blue-600 to-purple-600 dark:from-blue-900 dark:to-purple-900">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+        </div>
+        
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto"
+          >
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+              Ready to transform your future?
+            </h2>
+            <p className="text-xl text-blue-100 dark:text-blue-100 mb-10 max-w-2xl mx-auto">
+              Let's work together to find and secure the perfect scholarship opportunities tailored just for you.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="/contact" 
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-purple-700 hover:bg-gray-100 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+              >
+                Get Started Today
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+              <a 
+                href="/services" 
+                className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white hover:bg-white/10 font-semibold rounded-full transition-all duration-300"
+              >
+                Learn More
+              </a>
+            </div>
+            <p className="mt-6 text-sm text-blue-100/80 dark:text-blue-200/80">
+              Schedule a free 30-minute consultation to discuss your goals
+            </p>
+          </motion.div>
+        </div>
+        
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-1/2 w-[500px] h-[500px] bg-purple-400/20 rounded-full -translate-x-1/2 -translate-y-1/3 blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-400/20 rounded-full translate-x-1/4 translate-y-1/4 blur-3xl"></div>
+      </section>
       
     </>
   );

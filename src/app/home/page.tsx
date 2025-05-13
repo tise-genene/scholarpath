@@ -31,9 +31,10 @@ function Home() {
   );
 
   return (
+    <div className="bg-white">
     <main
       className="relative min-h-screen bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/bac.avif')" }}
+      
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
@@ -108,5 +109,6 @@ function Home() {
         </div>
       </div>
     </main>
+    </div >
   );
 }

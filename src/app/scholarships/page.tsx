@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { Search, Award, Globe, BookOpen } from "lucide-react";
 
 interface Scholarship {
   title: string;
@@ -9,74 +10,219 @@ interface Scholarship {
   deadline: string;
   amount: number;
   country: string;
-  eligibility: string;
-  applyLink: string;
   level: string;
-  isPublished: boolean;
 }
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+};
+
 export default function ScholarshipsPage() {
-  const [scholarships, setScholarships] = useState<Scholarship[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filters, setFilters] = useState({
+    level: "",
+    country: "",
+  });
 
-  const sampleScholarship: Scholarship = {
-    title: "Test Scholarship",
-    description: "This is a test scholarship for demonstration purposes.",
-    deadline: "2025-12-31",
-    amount: 5000,
-    country: "USA",
-    eligibility: "Open to all undergraduate students.",
-    applyLink: "https://example.com/apply",
-    level: "Undergraduate",
-    isPublished: true,
-  };
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
-  useEffect(() => {
-    setScholarships([sampleScholarship]);
-  }, []);
+  const sampleScholarships: Scholarship[] = [
+    {
+      title: "Fully Funded Undergraduate Scholarship",
+      description: "Complete financial coverage for outstanding international students pursuing undergraduate studies.",
+      deadline: "2024-12-31",
+      amount: 50000,
+      country: "USA",
+      level: "Undergraduate",
+    },
+    {
+      title: "Graduate Research Fellowship",
+      description: "Funding for graduate students conducting innovative research in STEM fields.",
+      deadline: "2024-11-15",
+      amount: 35000,
+      country: "Canada",
+      level: "Graduate",
+    },
+    {
+      title: "International Leadership Program",
+      description: "For students demonstrating exceptional leadership potential and community involvement.",
+      deadline: "2025-01-15",
+      amount: 25000,
+      country: "UK",
+      level: "Undergraduate",
+    },
+    {
+      title: "Women in Tech Scholarship",
+      description: "Supporting women pursuing degrees in computer science and engineering.",
+      deadline: "2024-10-30",
+      amount: 20000,
+      country: "Germany",
+      level: "Undergraduate",
+    },
+    {
+      title: "Global Excellence Scholarship",
+      description: "Merit-based scholarship for high-achieving international students.",
+      deadline: "2025-02-28",
+      amount: 30000,
+      country: "Australia",
+      level: "Graduate",
+    },
+    {
+      title: "STEM Innovation Award",
+      description: "For students with innovative projects in science and technology.",
+      deadline: "2024-12-15",
+      amount: 15000,
+      country: "USA",
+      level: "Graduate",
+    },
+  ];
+
+  const filteredScholarships = sampleScholarships.filter((scholarship) => {
+    const matchesSearch = scholarship.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                       scholarship.description.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesLevel = !filters.level || scholarship.level === filters.level;
+    const matchesCountry = !filters.country || scholarship.country === filters.country;
+
+    return matchesSearch && matchesLevel && matchesCountry;
+  });
 
   return (
-    <>
-      {/* Scholarships List */}
-      <section className="relative py-20 px-6 sm:px-10 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen">
-        <div className="absolute top-[-5rem] left-[-5rem] w-[400px] h-[400px] bg-blue-300 opacity-30 rounded-full blur-3xl z-0" />
-        <div className="absolute bottom-[-5rem] right-[-5rem] w-[500px] h-[500px] bg-pink-300 opacity-40 rounded-full blur-3xl z-0" />
+    <div className="min-h-screen bg-white dark:bg-[#191919] text-gray-900 dark:text-gray-100">
+      {/* Hero Section */}
+      <section className="relative py-24 px-6 sm:px-10 bg-white dark:bg-[#191919] overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-[0.03]"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto">
-          {/* Title only animated */}
-          <motion.h2
-            className="text-4xl sm:text-5xl font-extrabold text-purple-800 text-center mb-12"
+        <div className="relative z-10 max-w-6xl mx-auto text-center">
+          <motion.h1 
+            className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-blue-600 mb-6"
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            🎓 Available Scholarships
-          </motion.h2>
+            Find Your Perfect Scholarship
+          </motion.h1>
+          
+          <motion.p 
+            className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Discover thousands of scholarships from around the world to fund your education.
+          </motion.p>
+
+          {/* Search Bar */}
+          <motion.div 
+            className="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-2 flex flex-col sm:flex-row gap-2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <div className="relative flex-1">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <Search className="h-5 w-5 text-gray-400" />
+              </div>
+              <input
+                type="text"
+                placeholder="Search scholarships..."
+                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+            <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center justify-center">
+              <Search className="mr-2 h-5 w-5" />
+              Search
+            </button>
+          </motion.div>
+
+          {/* Quick Filters */}
+          <motion.div 
+            className="flex flex-wrap justify-center gap-3 mt-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <button 
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${filters.level === 'Undergraduate' ? 'bg-purple-100 text-purple-700' : 'bg-white text-gray-700 hover:bg-gray-50'}`}
+              onClick={() => setFilters({...filters, level: filters.level === 'Undergraduate' ? '' : 'Undergraduate'})}
+            >
+              🎓 Undergraduate
+            </button>
+            <button 
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${filters.level === 'Graduate' ? 'bg-blue-100 text-blue-700' : 'bg-white text-gray-700 hover:bg-gray-50'}`}
+              onClick={() => setFilters({...filters, level: filters.level === 'Graduate' ? '' : 'Graduate'})}
+            >
+              📚 Graduate
+            </button>
+            <button 
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${filters.country === 'USA' ? 'bg-red-100 text-red-700' : 'bg-white text-gray-700 hover:bg-gray-50'}`}
+              onClick={() => setFilters({...filters, country: filters.country === 'USA' ? '' : 'USA'})}
+            >
+              🇺🇸 US Universities
+            </button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Scholarships Grid */}
+      <section className="py-20 px-6 sm:px-10 bg-white dark:bg-[#191919]" ref={ref}>
+        <div className="max-w-7xl mx-auto">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Available Scholarships</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Browse through our curated list of scholarships from top institutions worldwide.
+            </p>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {scholarships.map((scholarship, index) => (
+            {filteredScholarships.map((scholarship, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-transform transform hover:scale-105 flex flex-col justify-between"
+                className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-transform transform hover:scale-105 flex flex-col justify-between"
               >
                 <div>
-                  <h3 className="text-2xl font-semibold text-blue-600 mb-2">{scholarship.title}</h3>
-                  <p className="text-gray-700 mb-4">{scholarship.description}</p>
+                  <h3 className="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-2">{scholarship.title}</h3>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">{scholarship.description}</p>
 
-                  <ul className="text-gray-600 space-y-2">
+                  <ul className="text-gray-600 dark:text-gray-400 space-y-2">
                     <li><strong>Deadline:</strong> {scholarship.deadline}</li>
                     <li><strong>Amount:</strong> ${scholarship.amount}</li>
                     <li><strong>Country:</strong> {scholarship.country}</li>
-                    <li><strong>Eligibility:</strong> {scholarship.eligibility}</li>
                     <li><strong>Level:</strong> {scholarship.level}</li>
                   </ul>
                 </div>
 
                 <a
-                  href={scholarship.applyLink}
+                  href="#"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 inline-block bg-purple-700 text-white text-center py-3 px-6 rounded-full font-bold hover:bg-purple-800 transition duration-300"
+                  className="mt-6 inline-block bg-purple-700 hover:bg-purple-800 text-white text-center py-3 px-6 rounded-full font-bold transition duration-300 dark:bg-purple-600 dark:hover:bg-purple-700"
                 >
                   Apply Now
                 </a>
@@ -86,169 +232,130 @@ export default function ScholarshipsPage() {
         </div>
       </section>
 
-      {/* Why Apply Through Us Section */}
-      <section className="py-20 px-6 sm:px-10 bg-white">
+      {/* Top Study Destinations Section */}
+      <section className="py-20 px-6 sm:px-10 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/10 dark:to-blue-900/10">
         <div className="max-w-6xl mx-auto text-center">
-          {/* Title only animated */}
           <motion.h2
-            className="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-10"
+            className="text-4xl sm:text-5xl font-extrabold text-blue-900 mb-10"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Why To Apply Through Us?
+            🌍 Top Study Destinations
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div className="bg-purple-100 rounded-2xl p-8 shadow-md hover:shadow-xl transition hover:scale-105">
-              <h3 className="text-2xl font-semibold text-purple-700 mb-4">Expert Guidance</h3>
-              <p className="text-gray-700">
-                Our experienced team will help you choose the right scholarships and guide you every step of the way.
-              </p>
-            </div>
-
-            <div className="bg-blue-100 rounded-2xl p-8 shadow-md hover:shadow-xl transition hover:scale-105">
-              <h3 className="text-2xl font-semibold text-blue-700 mb-4">Personalized Support</h3>
-              <p className="text-gray-700">
-                We offer personalized counseling, essay reviews, and application strategy tailored just for you.
-              </p>
-            </div>
-
-            <div className="bg-pink-100 rounded-2xl p-8 shadow-md hover:shadow-xl transition hover:scale-105">
-              <h3 className="text-2xl font-semibold text-pink-700 mb-4">Global Opportunities</h3>
-              <p className="text-gray-700">
-                Unlock opportunities across the world and increase your chances of studying at top universities abroad.
-              </p>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { country: "USA", flag: "🇺🇸", description: "Known for Ivy League and fully funded opportunities." },
+              { country: "UK", flag: "🇬🇧", description: "Home to Chevening, Commonwealth, and other major awards." },
+              { country: "Germany", flag: "🇩🇪", description: "Free tuition and DAAD-funded options for all levels." },
+              { country: "Canada", flag: "🇨🇦", description: "Generous government and university scholarships." },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition hover:scale-105"
+                whileHover={{ scale: 1.05 }}
+              >
+                <h3 className="text-xl font-semibold mb-2">
+                  {item.flag} {item.country}
+                </h3>
+                <p className="text-gray-700 text-sm">{item.description}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
-      {/* Top Study Destinations Section */}
-<section className="py-20 px-6 sm:px-10 bg-gradient-to-br from-purple-50 to-blue-50">
-  <div className="max-w-6xl mx-auto text-center">
-    <motion.h2
-      className="text-4xl sm:text-5xl font-extrabold text-blue-900 mb-10"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-    >
-      🌍 Top Study Destinations
-    </motion.h2>
-
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-      {[
-        { country: "USA", flag: "🇺🇸", description: "Known for Ivy League and fully funded opportunities." },
-        { country: "UK", flag: "🇬🇧", description: "Home to Chevening, Commonwealth, and other major awards." },
-        { country: "Germany", flag: "🇩🇪", description: "Free tuition and DAAD-funded options for all levels." },
-        { country: "Canada", flag: "🇨🇦", description: "Generous government and university scholarships." },
-      ].map((item, index) => (
-        <motion.div
-          key={index}
-          className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition hover:scale-105"
-          whileHover={{ scale: 1.05 }}
-        >
-          <h3 className="text-xl font-semibold mb-2">
-            {item.flag} {item.country}
-          </h3>
-          <p className="text-gray-700 text-sm">{item.description}</p>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
 
       {/* How We Help Section */}
-<section className="py-20 px-6 sm:px-10 bg-white">
-  <div className="max-w-6xl mx-auto text-center">
-    <motion.h2
-      className="text-4xl sm:text-5xl font-extrabold text-purple-800 mb-10"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-    >
-      🎯 How We Help You Win Scholarships
-    </motion.h2>
+      <div className="py-20 px-6 sm:px-10 bg-white dark:bg-[#191919] text-gray-900 dark:text-gray-100">
+        <div className="max-w-6xl mx-auto text-center">
+          <motion.h2
+            className="text-4xl sm:text-5xl font-extrabold text-purple-800 dark:text-purple-400 mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            🎯 How We Help You Win Scholarships
+          </motion.h2>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-      {[
-        { title: "Profile Review", desc: "We evaluate your academic and extracurricular strengths." },
-        { title: "Opportunity Match", desc: "We connect you with the right scholarships." },
-        { title: "Essay Support", desc: "We review and refine your statements to make them stand out." },
-        { title: "Submission Strategy", desc: "We guide you on how and when to apply for maximum success." },
-      ].map((item, index) => (
-        <motion.div
-          key={index}
-          className="bg-purple-100 rounded-xl shadow-md p-6 hover:shadow-xl transition hover:scale-105"
-          whileHover={{ scale: 1.05 }}
-        >
-          <h3 className="text-lg font-bold text-purple-800 mb-2">{item.title}</h3>
-          <p className="text-gray-700 text-sm">{item.desc}</p>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
-{/* Success Stories Section */}
-<section className="py-20 px-6 sm:px-10 bg-gradient-to-br from-pink-50 to-purple-50">
-  <div className="max-w-6xl mx-auto text-center">
-    <motion.h2
-      className="text-4xl sm:text-5xl font-extrabold text-pink-700 mb-12"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-    >
-      🌟 Success Stories
-    </motion.h2>
-
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-      {[
-        {
-          name: "Liya from Ethiopia",
-          quote: "Thanks to the support I received, I secured a fully funded scholarship in Germany!",
-          country: "Germany",
-          image: "/students/liya.jpg", // Replace with your actual image path
-        },
-        {
-          name: "Samuel from Kenya",
-          quote: "This platform gave me the tools and confidence to apply abroad — now I’m studying in the UK.",
-          country: "UK",
-          image: "/students/samuel.jpg",
-        },
-        {
-          name: "Fatima from Nigeria",
-          quote: "I was guided every step of the way — from essays to interviews. I got a scholarship in Canada!",
-          country: "Canada",
-          image: "/students/fatima.jpg",
-        },
-      ].map((story, index) => (
-        <motion.div
-          key={index}
-          className="bg-white rounded-2xl shadow-md p-6 text-left hover:shadow-xl transition hover:scale-105"
-          whileHover={{ scale: 1.03 }}
-        >
-          <div className="flex items-center gap-4 mb-4">
-            <img
-              src={story.image}
-              alt={story.name}
-              className="w-14 h-14 rounded-full object-cover border-2 border-purple-400"
-            />
-            <div>
-              <h4 className="font-semibold text-purple-800">{story.name}</h4>
-              <p className="text-sm text-gray-500">{story.country}</p>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { title: "Profile Review", desc: "We evaluate your academic and extracurricular strengths." },
+              { title: "Opportunity Match", desc: "We connect you with the right scholarships." },
+              { title: "Essay Support", desc: "We review and refine your statements to make them stand out." },
+              { title: "Submission Strategy", desc: "We guide you on how and when to apply for maximum success." },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="bg-purple-100 dark:bg-purple-900/30 rounded-xl shadow-md p-6 hover:shadow-xl transition hover:scale-105"
+                whileHover={{ scale: 1.05 }}
+              >
+                <h3 className="text-lg font-bold text-purple-800 dark:text-purple-300 mb-2">{item.title}</h3>
+                <p className="text-gray-700 dark:text-gray-300 text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
           </div>
-          <p className="text-gray-700 italic">"{story.quote}"</p>
-        </motion.div>
-      ))}
+        </div>
+      </div>
+
+      {/* Success Stories Section */}
+      <section className="py-20 px-6 sm:px-10 bg-white dark:bg-[#191919]">
+        <div className="max-w-6xl mx-auto text-center">
+          <motion.h2
+            className="text-4xl sm:text-5xl font-extrabold text-pink-700 dark:text-pink-400 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            🌟 Success Stories
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {[
+              {
+                name: "Liya from Ethiopia",
+                quote: "Thanks to the support I received, I secured a fully funded scholarship in Germany!",
+                country: "Germany",
+                image: "/students/liya.jpg",
+              },
+              {
+                name: "Samuel from Kenya",
+                quote: "This platform gave me the tools and confidence to apply abroad — now I'm studying in the UK.",
+                country: "UK",
+                image: "/students/samuel.jpg",
+              },
+              {
+                name: "Fatima from Nigeria",
+                quote: "I was guided every step of the way — from essays to interviews. I got a scholarship in Canada!",
+                country: "Canada",
+                image: "/students/fatima.jpg",
+              },
+            ].map((story, index) => (
+              <motion.div
+                key={index}
+                className="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 text-left hover:shadow-xl transition hover:scale-105"
+                whileHover={{ scale: 1.03 }}
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <img
+                    src={story.image}
+                    alt={story.name}
+                    className="w-14 h-14 rounded-full object-cover border-2 border-purple-400"
+                  />
+                  <div>
+                    <h4 className="font-semibold text-purple-800 dark:text-purple-300">{story.name}</h4>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{story.country}</p>
+                  </div>
+                </div>
+                <p className="text-gray-700 dark:text-gray-300 italic">"{story.quote}"</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
-  </div>
-</section>
-
-
-    </>
   );
 }
