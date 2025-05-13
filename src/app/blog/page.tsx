@@ -4,59 +4,9 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { blogPosts } from '@/data/blog';
+import { BlogPostCard } from '@/components/BlogPostCard';
 
-const SAMPLE_POSTS = [
-  {
-    id: 1,
-    title: 'The Ultimate Scholarship Resource Guide',
-    category: 'Scholarship Guides',
-    date: 'April 28, 2025',
-    excerpt: 'Comprehensive guide to finding and applying for scholarships in 2025',
-    image: '/resources-guide.jpg',
-    author: 'Tegegn Gebre',
-    readingTime: '10 min read',
-  },
-  {
-    id: 2,
-    title: 'Mastering Scholarship Applications',
-    category: 'Application Tips',
-    date: 'April 25, 2025',
-    excerpt: 'Step-by-step guide to creating a winning scholarship application',
-    image: '/application-tips.jpg',
-    author: 'Tegegn Gebre',
-    readingTime: '8 min read',
-  },
-  {
-    id: 3,
-    title: 'Understanding Financial Aid Options',
-    category: 'Financial Aid',
-    date: 'April 20, 2025',
-    excerpt: 'Complete guide to financial aid for international students',
-    image: '/financial-aid.jpg',
-    author: 'Tegegn Gebre',
-    readingTime: '7 min read',
-  },
-  {
-    id: 4,
-    title: 'Study Abroad 101',
-    category: 'Study Abroad',
-    date: 'April 15, 2025',
-    excerpt: 'Everything you need to know about studying abroad and scholarships',
-    image: '/study-abroad.jpg',
-    author: 'Tegegn Gebre',
-    readingTime: '9 min read',
-  },
-  {
-    id: 5,
-    title: 'Scholarship Success Stories',
-    category: 'Scholarship Guides',
-    date: 'April 10, 2025',
-    excerpt: 'Real success stories from students who won scholarships',
-    image: '/success-stories.jpg',
-    author: 'Tegegn Gebre',
-    readingTime: '6 min read',
-  },
-];
 
 export default function BlogPage() {
   const [email, setEmail] = useState('');
@@ -79,7 +29,9 @@ export default function BlogPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-6">Resources & Blog</h1>
+            <motion.h1 className="text-5xl font-bold text-purple-800 dark:text-purple-300 text-center mb-8">
+              Resources & Blog
+            </motion.h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Access valuable resources and expert insights to guide your scholarship journey
             </p>
@@ -114,31 +66,9 @@ export default function BlogPage() {
               Discover our latest articles and resources to help you with your scholarship journey
             </p>
           </div>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {SAMPLE_POSTS.map((post) => (
-  <Card key={post.id} className="flex flex-col h-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all">
-    <div className="relative h-48 w-full">
-      <Image
-        src={post.image}
-        alt={post.title}
-        fill
-        className="object-cover"
-        priority={post.id === 1}
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-      />
-    </div>
-    <CardHeader className="p-6 flex-1 flex flex-col">
-      <span className="inline-block bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 text-xs font-semibold px-3 py-1 rounded-full mb-3 self-start">
-        {post.category}
-      </span>
-      <CardTitle className="text-xl font-bold text-gray-900 dark:text-white mb-3">{post.title}</CardTitle>
-      <CardDescription className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 flex-grow">{post.excerpt}</CardDescription>
-      <div className="flex items-center justify-between text-sm pt-4 border-t border-gray-100 dark:border-gray-700">
-        <span className="text-gray-500 dark:text-gray-400">{post.date}</span>
-        <span className="text-purple-600 dark:text-purple-400 font-medium">{post.readingTime}</span>
-      </div>
-    </CardHeader>
-  </Card>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full">
+            {blogPosts.map((post) => (
+  <BlogPostCard key={post.id} post={post} />
 ))}
           </div>
         </div>

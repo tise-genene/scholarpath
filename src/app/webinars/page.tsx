@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { FaCalendarAlt, FaClock, FaVideo } from "react-icons/fa";
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
+import { webinars } from '@/data/webinars';
+import { WebinarCard } from '@/components/WebinarCard';
 
 export default function WebinarPage() {
   return (
@@ -19,12 +21,12 @@ export default function WebinarPage() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <motion.h2
-          className="text-4xl md:text-5xl font-extrabold text-purple-800 dark:text-purple-300 text-center mb-6"
+        <motion.h1
+          className="text-5xl font-bold text-purple-800 dark:text-purple-300 text-center mb-8"
           whileHover={{ scale: 1.02 }}
         >
-          🎓 Live Scholarship Webinar
-        </motion.h2>
+          Live Scholarship Webinar
+        </motion.h1>
 
         <p className="text-gray-700 dark:text-gray-200 text-lg text-center mb-10 max-w-3xl mx-auto">
           Unlock your scholarship success with tips on applications, interviews, and discovering the best international opportunities! 
@@ -87,68 +89,9 @@ export default function WebinarPage() {
         </p>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {/* Card 1 */}
-          <Card className="transition-transform hover:scale-105">
-  <CardHeader>
-    <CardTitle className="font-semibold text-purple-700 dark:text-purple-300 mb-2">
-      How to Write a Winning Motivation Letter
-    </CardTitle>
-    <CardDescription className="mb-4 text-gray-800 dark:text-gray-100">
-      Learn the best strategies to write a compelling motivation letter that grabs attention and makes you unforgettable.
-    </CardDescription>
-    <div className="text-gray-700 dark:text-gray-200">April 30, 2025 - 4:00 PM (GMT+3)</div>
-  </CardHeader>
-  <CardFooter>
-    <a
-      href="#register"
-      className="bg-purple-600 text-white px-6 py-2 rounded-full mt-4 inline-block hover:bg-purple-700 w-full text-center"
-    >
-      Register Now
-    </a>
-  </CardFooter>
-</Card>
-
-          {/* Card 2 */}
-          <Card className="transition-transform hover:scale-105">
-  <CardHeader>
-    <CardTitle className="font-semibold text-purple-700 dark:text-purple-300 mb-2">
-      Scholarship Application Tips
-    </CardTitle>
-    <CardDescription className="mb-4 text-gray-800 dark:text-gray-100">
-      Master the scholarship application process with insider tips and best practices that can make your application shine brighter.
-    </CardDescription>
-    <div className="text-gray-700 dark:text-gray-200">May 5, 2025 - 5:00 PM (GMT+3)</div>
-  </CardHeader>
-  <CardFooter>
-    <a
-      href="#register"
-      className="bg-purple-600 text-white px-6 py-2 rounded-full mt-4 inline-block hover:bg-purple-700 w-full text-center"
-    >
-      Register Now
-    </a>
-  </CardFooter>
-</Card>
-
-          {/* Card 3 */}
-          <Card className="transition-transform hover:scale-105">
-  <CardHeader>
-    <CardTitle className="font-semibold text-purple-700 dark:text-purple-300 mb-2">
-      Navigating the Scholarship Interview
-    </CardTitle>
-    <CardDescription className="mb-4 text-gray-800 dark:text-gray-100">
-      Prepare confidently for your scholarship interview with expert insights, mock questions, and practical techniques.
-    </CardDescription>
-    <div className="text-gray-700 dark:text-gray-200">May 12, 2025 - 4:00 PM (GMT+3)</div>
-  </CardHeader>
-  <CardFooter>
-    <a
-      href="#register"
-      className="bg-purple-600 text-white px-6 py-2 rounded-full mt-4 inline-block hover:bg-purple-700 w-full text-center"
-    >
-      Register Now
-    </a>
-  </CardFooter>
-</Card>
+          {webinars.map((webinar, idx) => (
+            <WebinarCard key={idx} webinar={webinar} />
+          ))}
         </div>
       </motion.div>
 

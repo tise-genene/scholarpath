@@ -40,25 +40,25 @@ export default function Navbar() {
         </div>
 
         <div className={`md:flex space-x-6 ${isOpen ? "block" : "hidden"} text-white md:text-gray-800`}>
-          <Link href="/" className="hover:text-blue-600">
+          <Link href="/" className="hover:text-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
             Home
           </Link>
-          <Link href="/scholarships" className="hover:text-blue-600">
+          <Link href="/scholarships" className="hover:text-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
             Scholarships
           </Link>
-          <Link href="/counseling" className="hover:text-blue-600">
+          <Link href="/counseling" className="hover:text-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
             Counseling
           </Link>
-          <Link href="/webinars" className="hover:text-blue-600">
+          <Link href="/webinars" className="hover:text-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
             Webinars
           </Link>
-          <Link href="/services" className="hover:text-blue-600">
+          <Link href="/services" className="hover:text-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
             Services
           </Link>
-          <Link href="/contactus" className="hover:text-blue-600">
+          <Link href="/contactus" className="hover:text-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
            Contact Us
           </Link>
-          <Link href="/LOGIN" className="hover:text-blue-600">
+          <Link href="/LOGIN" className="hover:text-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
             Login
           </Link>
         </div>

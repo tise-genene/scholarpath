@@ -3,16 +3,10 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Search, Award, Globe, BookOpen } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
+import { sampleScholarships } from '@/data/scholarships';
+import { ScholarshipCard } from '@/components/ScholarshipCard';
 
-interface Scholarship {
-  title: string;
-  description: string;
-  deadline: string;
-  amount: number;
-  country: string;
-  level: string;
-}
+
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -47,56 +41,6 @@ export default function ScholarshipsPage() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
-  const sampleScholarships: Scholarship[] = [
-    {
-      title: "Fully Funded Undergraduate Scholarship",
-      description: "Complete financial coverage for outstanding international students pursuing undergraduate studies.",
-      deadline: "2024-12-31",
-      amount: 50000,
-      country: "USA",
-      level: "Undergraduate",
-    },
-    {
-      title: "Graduate Research Fellowship",
-      description: "Funding for graduate students conducting innovative research in STEM fields.",
-      deadline: "2024-11-15",
-      amount: 35000,
-      country: "Canada",
-      level: "Graduate",
-    },
-    {
-      title: "International Leadership Program",
-      description: "For students demonstrating exceptional leadership potential and community involvement.",
-      deadline: "2025-01-15",
-      amount: 25000,
-      country: "UK",
-      level: "Undergraduate",
-    },
-    {
-      title: "Women in Tech Scholarship",
-      description: "Supporting women pursuing degrees in computer science and engineering.",
-      deadline: "2024-10-30",
-      amount: 20000,
-      country: "Germany",
-      level: "Undergraduate",
-    },
-    {
-      title: "Global Excellence Scholarship",
-      description: "Merit-based scholarship for high-achieving international students.",
-      deadline: "2025-02-28",
-      amount: 30000,
-      country: "Australia",
-      level: "Graduate",
-    },
-    {
-      title: "STEM Innovation Award",
-      description: "For students with innovative projects in science and technology.",
-      deadline: "2024-12-15",
-      amount: 15000,
-      country: "USA",
-      level: "Graduate",
-    },
-  ];
 
   const filteredScholarships = sampleScholarships.filter((scholarship) => {
     const matchesSearch = scholarship.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -115,12 +59,12 @@ export default function ScholarshipsPage() {
 
         <div className="relative z-10 max-w-6xl mx-auto text-center">
           <motion.h1 
-            className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-purple-700 dark:text-purple-300 mb-6"
+            className="text-5xl font-bold text-purple-800 dark:text-purple-300 text-center mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Find Your Perfect Scholarship
+            Scholarships
           </motion.h1>
           
           <motion.p 
@@ -201,36 +145,9 @@ export default function ScholarshipsPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 w-full">
             {filteredScholarships.map((scholarship, index) => (
-              <Card key={index} className="transition-transform hover:scale-105 flex flex-col justify-between">
-  <CardHeader>
-    <CardTitle className="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-2">
-      {scholarship.title}
-    </CardTitle>
-    <CardDescription className="mb-4 text-gray-700 dark:text-gray-200">
-      {scholarship.description}
-    </CardDescription>
-  </CardHeader>
-  <div className="px-6 pb-4">
-    <ul className="text-gray-600 dark:text-gray-400 space-y-2">
-      <li><strong>Deadline:</strong> {scholarship.deadline}</li>
-      <li><strong>Amount:</strong> ${scholarship.amount}</li>
-      <li><strong>Country:</strong> {scholarship.country}</li>
-      <li><strong>Level:</strong> {scholarship.level}</li>
-    </ul>
-  </div>
-  <CardFooter className="px-6 pt-0">
-    <a
-      href="#"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="w-full bg-purple-700 hover:bg-purple-800 text-white text-center py-3 px-6 rounded-full font-bold transition duration-300 dark:bg-purple-600 dark:hover:bg-purple-700"
-    >
-      Apply Now
-    </a>
-  </CardFooter>
-</Card>
+              <ScholarshipCard key={index} scholarship={scholarship} />
             ))}
           </div>
         </div>
