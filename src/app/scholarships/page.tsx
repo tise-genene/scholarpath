@@ -5,8 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { Search, Award, Globe, BookOpen } from "lucide-react";
 import { sampleScholarships } from '@/data/scholarships';
 import { ScholarshipCard } from '@/components/ScholarshipCard';
-
-
+import Image from 'next/image';
 
 const containerVariants = {
   hidden: { opacity: 0 },

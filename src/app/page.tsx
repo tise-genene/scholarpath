@@ -10,7 +10,8 @@ import {
   Banknote,
 } from 'lucide-react';
 
-const FEATURES = [
+// Remove unused FEATURES constant
+const features = [
   {
     title: 'Personalized Matches',
     description: 'Get scholarship suggestions tailored to your profile.',
@@ -309,7 +310,7 @@ export default function Page() {
             { name: "Sarah M.", text: "The scholarship matching saved me so much time. I wouldn't have found these opportunities on my own." },
           ].map((testimonial, i) => (
             <div key={i} className="bg-white dark:bg-gray-900 dark:bg-gray-800 rounded-2xl shadow-md p-8">
-              <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 italic mb-4">"{testimonial.text}"</p>
+              <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 italic mb-4">&quot;{testimonial.text}&quot;</p>
               <p className="font-medium text-purple-700 dark:text-purple-300 dark:text-purple-400">— {testimonial.name}</p>
             </div>
           ))}
