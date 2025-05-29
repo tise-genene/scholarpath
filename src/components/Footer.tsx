@@ -1,6 +1,6 @@
 'use client';
 
-import { FaFacebook, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { FaLinkedin, FaTelegram } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 export default function Footer() {
@@ -18,12 +18,12 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <h4 className="text-xl font-bold mb-3">🌍 ScholarConnect</h4>
+          <h4 className="text-xl font-bold mb-3">Tegegn's Pathway</h4>
           <p className="text-gray-200 dark:text-gray-300">Empowering your global education journey.</p>
           <div className="mt-4 space-y-1 text-gray-400 dark:text-gray-400 text-xs">
-            <div>123 Scholar St, Education City</div>
-            <div>+1 (234) 567-890</div>
-            <div>contact@scholarconnect.com</div>
+            <div>Tegegn From Verona, Italy</div>
+            <div>+39 351 350 2026</div>
+            <div>contact on <a href="https://t.me/Tegegnpathway">Telegram</a></div>
           </div>
         </motion.div>
 
@@ -64,10 +64,8 @@ export default function Footer() {
         >
           <h5 className="text-lg font-semibold mb-3">Connect With Us</h5>
           <div className="flex gap-4 text-xl">
-            <a href="#" className="hover:text-blue-400 transition"><FaFacebook /></a>
-            <a href="#" className="hover:text-blue-300 transition"><FaTwitter /></a>
-            <a href="#" className="hover:text-pink-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 transition"><FaInstagram /></a>
-            <a href="#" className="hover:text-blue-500 transition"><FaLinkedin /></a>
+            <a href="https://t.me/Tegegnpathway" className="hover:text-blue-400 transition"><FaTelegram /></a>
+            <a href="https://www.linkedin.com/in/tegegn-tise-1b989a198/" className="hover:text-blue-500 transition"><FaLinkedin /></a>
           </div>
         </motion.div>
       </div>
@@ -78,7 +76,7 @@ export default function Footer() {
           <a href="/terms-and-conditions" className="hover:text-pink-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 transition">Terms & Conditions</a>
           <a href="/privacy-policy" className="hover:text-pink-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 transition">Privacy Policy</a>
         </div>
-        <p>&copy; {currentYear} ScholarConnect. All rights reserved.</p>
+        <p>&copy; {currentYear} <a href="https://t.me/Tegegnpathway" className="hover:text-pink-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 transition">Tegegn's Pathway</a>. All rights reserved.</p>
       </div>
     </footer>
   );

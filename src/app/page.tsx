@@ -107,7 +107,7 @@ export default function Page() {
                 </div>
                 <div className="text-center sm:text-left">
                   <p className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-400">Join our community of</p>
-                  <p className="font-semibold text-gray-900 dark:text-white">5,000+ successful students</p>
+                  <p className="font-semibold text-gray-900 dark:text-white">10,000+ successful students</p>
                 </div>
               </motion.div>
             </div>
@@ -334,31 +334,6 @@ export default function Page() {
           ))}
         </div>
       </section>
-
-      {/* --- NEWSLETTER SIGNUP --- */}
-      <section className="py-16 bg-white dark:bg-gray-900">
-  <div className="max-w-2xl mx-auto text-center">
-    <h2 className="text-3xl font-bold text-purple-800 mb-4">Stay Updated</h2>
-    <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 mb-6">
-      Get the latest scholarships and tips delivered to your inbox.
-    </p>
-    <form className="flex flex-col sm:flex-row gap-4 justify-center">
-      <input
-        type="email"
-        required
-        placeholder="Enter your email"
-        className="px-6 py-3 rounded-full border border-purple-300 dark:border-purple-700 bg-white dark:bg-gray-900 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-400 outline-none w-full sm:w-auto"
-      />
-      <button
-        type="submit"
-        className="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-8 py-3 rounded-full shadow-lg transition"
-      >
-        Subscribe
-      </button>
-    </form>
-  </div>
-</section>
-
     </main>
   );
 }
