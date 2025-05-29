@@ -76,7 +76,7 @@ export default function Footer() {
           <a href="/terms-and-conditions" className="hover:text-pink-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 transition">Terms & Conditions</a>
           <a href="/privacy-policy" className="hover:text-pink-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 transition">Privacy Policy</a>
         </div>
-        <p>&copy; {currentYear} <a href="https://t.me/Tegegnpathway" className="hover:text-pink-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 transition">Tegegn's Pathway</a>. All rights reserved.</p>
+        <p>&copy; {currentYear} <a href="https://t.me/Tegegnpathway" className="hover:text-pink-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 transition">Tegegn&apos;s Pathway</a>. All rights reserved.</p>
       </div>
     </footer>
   );

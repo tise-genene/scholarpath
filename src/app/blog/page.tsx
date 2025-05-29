@@ -1,9 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { blogPosts } from '@/data/blog';
 import { BlogPostCard } from '@/components/BlogPostCard';
 

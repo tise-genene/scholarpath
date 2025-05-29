@@ -1,6 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { FeatureCardData, ServiceCardData, TestimonialData, ResourceCardData } from '@/types/counseling';
-import { cn } from '@/lib/utils';
 
 export function FeatureCard({ Icon, title, desc }: FeatureCardData) {
   return (

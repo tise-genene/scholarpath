@@ -51,7 +51,7 @@ export default function AboutMe() {
               transition={{ delay: 0.2 }}
               className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed"
             >
-              Hello! I'm <strong className="text-purple-800 dark:text-purple-300 font-semibold">Tegegn</strong>, a passionate scholarship consultant and
+              Hello! I&apos;m <strong className="text-purple-800 dark:text-purple-300 font-semibold">Tegegn</strong>, a passionate scholarship consultant and
               tech enthusiast. I help students unlock international opportunities
               through expert guidance, personalized support, and modern tools.
             </motion.p>
