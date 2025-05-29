@@ -12,9 +12,9 @@ const navItems = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Scholarships', href: '/scholarships' },
-  { label: 'Resources & Blogs', href: '/blog' },
-  { label: 'Counseling & Services', href: '/counseling' },
-  { label: 'Webinars & Trainings', href: '/webinars' },
+  { label: 'Resources', href: '/blog' },
+  { label: 'Counseling', href: '/counseling' },
+  { label: 'Webinars', href: '/webinars' },
   { label: 'Contact', href: '/contact' },
 ];
 
