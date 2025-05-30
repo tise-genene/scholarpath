@@ -121,38 +121,79 @@ export default function AboutMe() {
                     I know firsthand what it takes to navigate the overwhelming world of applications, deadlines, motivation letters, interviews, and visa processes. That&apos;s why I created this website — to make your journey easier, faster, and more successful.
 
                     Why I&apos;m the Right Person to Guide You:
-                    <motion.p 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3 }}
-                      className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-2"
-                    >
-                      ✅ Proven Experience: I&apos;ve gone through the process multiple times and won. That means I don&apos;t just give advice — I live it.
-                    </motion.p>
-                    <motion.p 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4 }}
-                      className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-2"
-                    >
-                      ✅ Pan-African Perspective: Whether you&apos;re applying for programs in Europe, Asia, or Africa, I understand what works and what doesn&apos;t.
-                    </motion.p>
-                    <motion.p 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 }}
-                      className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-2"
-                    >
-                      ✅ Passion-Driven Mission: As a youth mentor and consultant, I&apos;m deeply committed to empowering others to pursue life-changing education abroad.
-                    </motion.p>
-                    <motion.p 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.6 }}
-                      className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-2"
-                    >
-                      ✅ Strategic Support: From finding the right scholarships to writing winning CVs and motivation letters, I offer practical, no-fluff guidance that gets results.
-                    </motion.p>
+                    <motion.div className="space-y-4">
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 }}
+                        className="flex items-center"
+                      >
+                        <span className="mr-2">✅</span>
+                        <span className="font-bold">Proven Experience</span>
+                      </motion.div>
+                      <motion.p 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 }}
+                        className="ml-4 italic text-gray-700 dark:text-gray-300 text-lg leading-relaxed"
+                      >
+                        I&apos;ve gone through the process multiple times and won. That means I don&apos;t just give advice — I live it.
+                      </motion.p>
+
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5 }}
+                        className="flex items-center"
+                      >
+                        <span className="mr-2">✅</span>
+                        <span className="font-bold">Pan-African Perspective</span>
+                      </motion.div>
+                      <motion.p 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5 }}
+                        className="ml-4 italic text-gray-700 dark:text-gray-300 text-lg leading-relaxed"
+                      >
+                        Whether you&apos;re applying for programs in Europe, Asia, or Africa, I understand what works and what doesn&apos;t.
+                      </motion.p>
+
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.6 }}
+                        className="flex items-center"
+                      >
+                        <span className="mr-2">✅</span>
+                        <span className="font-bold">Passion-Driven Mission</span>
+                      </motion.div>
+                      <motion.p 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.6 }}
+                        className="ml-4 italic text-gray-700 dark:text-gray-300 text-lg leading-relaxed"
+                      >
+                        As a youth mentor and consultant, I&apos;m deeply committed to empowering others to pursue life-changing education abroad.
+                      </motion.p>
+
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.7 }}
+                        className="flex items-center"
+                      >
+                        <span className="mr-2">✅</span>
+                        <span className="font-bold">Strategic Support</span>
+                      </motion.div>
+                      <motion.p 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.7 }}
+                        className="ml-4 italic text-gray-700 dark:text-gray-300 text-lg leading-relaxed"
+                      >
+                        From finding the right scholarships to writing winning CVs and motivation letters, I offer practical, no-fluff guidance that gets results.
+                      </motion.p>
+                    </motion.div>
 
                     What You&apos;ll Find Here:
                     <motion.p 
