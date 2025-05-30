@@ -1,7 +1,6 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
 import ThemeProvider from "../theme/theme-provider";
-import ThemeToggle from "../theme/theme-toggle";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";

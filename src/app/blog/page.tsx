@@ -1,9 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { blogPosts } from '@/data/blog';
 import { BlogPostCard } from '@/components/BlogPostCard';
 
@@ -30,7 +28,7 @@ export default function BlogPage() {
             transition={{ duration: 0.6 }}
           >
             <motion.h1 className="text-5xl font-bold text-purple-800 dark:text-purple-300 text-center mb-8">
-              Resources & Blog
+              Resources &amp; Blog
             </motion.h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Access valuable resources and expert insights to guide your scholarship journey

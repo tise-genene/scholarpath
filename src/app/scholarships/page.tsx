@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Search, Award, Globe, BookOpen } from "lucide-react";
+import { Search } from "lucide-react";
 import { sampleScholarships } from '@/data/scholarships';
 import { ScholarshipCard } from '@/components/ScholarshipCard';
 import Image from 'next/image';
@@ -272,7 +272,7 @@ export default function ScholarshipsPage() {
                     <p className="text-sm text-gray-500 dark:text-gray-400">{story.country}</p>
                   </div>
                 </div>
-                <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 italic">"{story.quote}"</p>
+                <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 italic">&quot;{story.quote}&quot;</p>
               </motion.div>
             ))}
           </div>

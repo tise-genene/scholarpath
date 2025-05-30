@@ -1,34 +1,8 @@
 'use client';
 
 import './globals.css';
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import {
-  Search,
-  BookOpenCheck,
-  Video,
-  Banknote,
-} from 'lucide-react';
-
-// Remove unused FEATURES constant
-const features = [
-  {
-    title: 'Personalized Matches',
-    description: 'Get scholarship suggestions tailored to your profile.',
-  },
-  {
-    title: '1:1 Counseling',
-    description: 'Schedule consultations with our experts for guidance.',
-  },
-  {
-    title: 'Webinars & Resources',
-    description: 'Join events and access tools to boost your chances.',
-  },
-  {
-    title: 'Application Tracking',
-    description: 'Keep tabs on all your scholarship applications in one place.',
-  },
-];
+import { Search, BookOpenCheck, Video, Banknote } from 'lucide-react';
 
 export default function Page() {
 
