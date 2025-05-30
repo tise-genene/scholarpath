@@ -51,9 +51,9 @@ export default function AboutMe() {
               transition={{ delay: 0.2 }}
               className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed"
             >
-              Hello! I&apos;m <strong className="text-purple-800 dark:text-purple-300 font-semibold">Tegegn</strong>, a passionate scholarship consultant and
-              tech enthusiast. I help students unlock international opportunities
-              through expert guidance, personalized support, and modern tools.
+              Hi, I&apos;m <strong className="text-purple-800 dark:text-purple-300 font-semibold">Tegegn</strong> — a passionate youth mentor and four-time international scholarship awardee. I&apos;ve won prestigious scholarships including Invest Your Talent in Italy (IYT), Konrad Adenauer Foundation, AERC, and a Double Degree in Germany. I&apos;m also a proud alumnus of the Young African Leaders Initiative (YALI).
+
+              Having successfully navigated the complex journey of studying abroad, I now help students like you find scholarships, craft winning applications, and pursue global opportunities with confidence.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
