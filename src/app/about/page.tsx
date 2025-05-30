@@ -20,12 +20,18 @@ const DynamicFaqItem = ({ faq, index }: { faq: { q: string; a: string }, index: 
 
 export default function AboutMe() {
   const [isMounted, setIsMounted] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
   if (!isMounted) return null;
+
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
     <>
       <section className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-16 bg-white dark:bg-gray-900">
@@ -43,7 +49,7 @@ export default function AboutMe() {
               transition={{ delay: 0.1 }}
               className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-purple-700 to-blue-600 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent"
             >
-              About <span className="text-blue-600 dark:text-blue-400">Me</span>
+              👋 About <span className="text-blue-600 dark:text-blue-400">Me</span>
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -51,9 +57,148 @@ export default function AboutMe() {
               transition={{ delay: 0.2 }}
               className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed"
             >
-              Hi, I&apos;m <strong className="text-purple-800 dark:text-purple-300 font-semibold">Tegegn</strong> — a passionate youth mentor and four-time international scholarship awardee. I&apos;ve won prestigious scholarships including Invest Your Talent in Italy (IYT), Konrad Adenauer Foundation, AERC, and a Double Degree in Germany. I&apos;m also a proud alumnus of the Young African Leaders Initiative (YALI).
+              From Ethiopia to Europe — Helping You Win Scholarships & Study Abroad with Confidence
 
-              Having successfully navigated the complex journey of studying abroad, I now help students like you find scholarships, craft winning applications, and pursue global opportunities with confidence.
+              Hi, I&apos;m <strong className="text-purple-800 dark:text-purple-300 font-semibold">Tegegn</strong> — a four-time international scholarship winner, youth advocate, and founder of this platform dedicated to helping Ethiopian and African students unlock global education opportunities.
+
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4"
+              >
+                Over the years, I&apos;ve successfully secured four competitive scholarships:
+              </motion.p>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-3"
+              >
+                🇮🇹 Invest Your Talent in Italy (IYT) – for my MSc in Economics and Data Analysis in Verona, Italy
+              </motion.p>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-3"
+              >
+                🇩🇪 Double Degree Program – in International Economic Policy with the University of Würzburg, Germany
+              </motion.p>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-3"
+              >
+                🇪🇹 Konrad Adenauer Foundation – in-country scholarship for my first master&apos;s in Ethiopia
+              </motion.p>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-3"
+              >
+                🌍 African Economic Research Consortium (AERC) – Collaborative Masters Programme (CMAP) in Economics scholarship for advanced training in economic policy
+              </motion.p>
+
+              I know firsthand what it takes to navigate the overwhelming world of applications, deadlines, motivation letters, interviews, and visa processes. That&apos;s why I created this website — to make your journey easier, faster, and more successful.
+
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4"
+              >
+                {isExpanded && (
+                  <>
+                    Why I&apos;m the Right Person to Guide You:
+                    <motion.p 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                      className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-2"
+                    >
+                      ✅ Proven Experience: I&apos;ve gone through the process multiple times and won. That means I don&apos;t just give advice — I live it.
+                    </motion.p>
+                    <motion.p 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4 }}
+                      className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-2"
+                    >
+                      ✅ Pan-African Perspective: Whether you&apos;re applying for programs in Europe, Asia, or Africa, I understand what works and what doesn&apos;t.
+                    </motion.p>
+                    <motion.p 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 }}
+                      className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-2"
+                    >
+                      ✅ Passion-Driven Mission: As a youth mentor and consultant, I&apos;m deeply committed to empowering others to pursue life-changing education abroad.
+                    </motion.p>
+                    <motion.p 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 }}
+                      className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-2"
+                    >
+                      ✅ Strategic Support: From finding the right scholarships to writing winning CVs and motivation letters, I offer practical, no-fluff guidance that gets results.
+                    </motion.p>
+
+                    What You&apos;ll Find Here:
+                    <motion.p 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.7 }}
+                      className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-2"
+                    >
+                      🎓 Step-by-step scholarship application tutorials
+                    </motion.p>
+                    <motion.p 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.8 }}
+                      className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-2"
+                    >
+                      ✍ Templates and strategies for CVs and motivation letters
+                    </motion.p>
+                    <motion.p 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.9 }}
+                      className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-2"
+                    >
+                      🎥 Video walkthroughs and webinars
+                    </motion.p>
+                    <motion.p 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.0 }}
+                      className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-2"
+                    >
+                      📢 The latest updates on international opportunities
+                    </motion.p>
+                    <motion.p 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.1 }}
+                      className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-2"
+                    >
+                      🧭 Personal mentorship and expert tips
+                    </motion.p>
+                  </>
+                )}
+              </motion.div>
+              <motion.button
+                onClick={toggleExpand}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.2 }}
+                className="text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 text-lg font-medium cursor-pointer"
+              >
+                {isExpanded ? 'Read Less' : 'Read More'}
+              </motion.button>
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
