@@ -57,7 +57,9 @@ export default function AboutMe() {
               transition={{ delay: 0.2 }}
               className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed"
             >
-              From Ethiopia to Europe — Helping You Win Scholarships & Study Abroad with Confidence
+              <motion.p className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                From Ethiopia to Europe — Helping You Win Scholarships & Study Abroad with Confidence
+              </motion.p>
 
               Hi, I&apos;m <strong className="text-purple-800 dark:text-purple-300 font-semibold">Tegegn</strong> — a four-time international scholarship winner, youth advocate, and founder of this platform dedicated to helping Ethiopian and African students unlock global education opportunities.
 
@@ -69,40 +71,44 @@ export default function AboutMe() {
               >
                 Over the years, I&apos;ve successfully secured four competitive scholarships:
               </motion.p>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-3"
-              >
-                🇮🇹 Invest Your Talent in Italy (IYT) – for my MSc in Economics and Data Analysis in Verona, Italy
-              </motion.p>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-3"
-              >
-                🇩🇪 Double Degree Program – in International Economic Policy with the University of Würzburg, Germany
-              </motion.p>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-3"
-              >
-                🇪🇹 Konrad Adenauer Foundation – in-country scholarship for my first master&apos;s in Ethiopia
-              </motion.p>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-3"
-              >
-                🌍 African Economic Research Consortium (AERC) – Collaborative Masters Programme (CMAP) in Economics scholarship for advanced training in economic policy
-              </motion.p>
-
-              I know firsthand what it takes to navigate the overwhelming world of applications, deadlines, motivation letters, interviews, and visa processes. That&apos;s why I created this website — to make your journey easier, faster, and more successful.
+              <motion.div className="space-y-4">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex items-center gap-2"
+                >
+                  <span className="text-2xl font-bold italic">🌟</span>
+                  <span className="font-bold italic">🇮🇹 Invest Your Talent in Italy (IYT) – for my MSc in Economics and Data Analysis in Verona, Italy</span>
+                </motion.div>
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="flex items-center gap-2"
+                >
+                  <span className="text-2xl font-bold italic">🎓</span>
+                  <span className="font-bold italic">🇩🇪 Double Degree Program – in International Economic Policy with the University of Würzburg, Germany</span>
+                </motion.div>
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="flex items-center gap-2"
+                >
+                  <span className="text-2xl font-bold italic">💡</span>
+                  <span className="font-bold italic">🇪🇹 Konrad Adenauer Foundation – in-country scholarship for my first master&apos;s in Ethiopia</span>
+                </motion.div>
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="flex items-center gap-2"
+                >
+                  <span className="text-2xl font-bold italic">🌐</span>
+                  <span className="font-bold italic">African Economic Research Consortium (AERC) – Collaborative Masters Programme (CMAP) in Economics scholarship for advanced training in economic policy</span>
+                </motion.div>
+              </motion.div>
 
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
@@ -112,6 +118,8 @@ export default function AboutMe() {
               >
                 {isExpanded && (
                   <>
+                    I know firsthand what it takes to navigate the overwhelming world of applications, deadlines, motivation letters, interviews, and visa processes. That&apos;s why I created this website — to make your journey easier, faster, and more successful.
+
                     Why I&apos;m the Right Person to Guide You:
                     <motion.p 
                       initial={{ opacity: 0, y: 20 }}
