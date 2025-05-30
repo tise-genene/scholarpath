@@ -126,7 +126,7 @@ export default function AboutMe() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
-                        className="flex items-center"
+                        className="flex items-center ml-8"
                       >
                         <span className="mr-2">✅</span>
                         <span className="font-bold">Proven Experience</span>
@@ -135,7 +135,7 @@ export default function AboutMe() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
-                        className="ml-4 italic text-gray-700 dark:text-gray-300 text-lg leading-relaxed"
+                        className="ml-8 italic text-gray-700 dark:text-gray-300 text-lg leading-relaxed"
                       >
                         I&apos;ve gone through the process multiple times and won. That means I don&apos;t just give advice — I live it.
                       </motion.p>
@@ -144,7 +144,7 @@ export default function AboutMe() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5 }}
-                        className="flex items-center"
+                        className="flex items-center ml-8"
                       >
                         <span className="mr-2">✅</span>
                         <span className="font-bold">Pan-African Perspective</span>
@@ -153,7 +153,7 @@ export default function AboutMe() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5 }}
-                        className="ml-4 italic text-gray-700 dark:text-gray-300 text-lg leading-relaxed"
+                        className="ml-8 italic text-gray-700 dark:text-gray-300 text-lg leading-relaxed"
                       >
                         Whether you&apos;re applying for programs in Europe, Asia, or Africa, I understand what works and what doesn&apos;t.
                       </motion.p>
@@ -162,7 +162,7 @@ export default function AboutMe() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.6 }}
-                        className="flex items-center"
+                        className="flex items-center ml-8"
                       >
                         <span className="mr-2">✅</span>
                         <span className="font-bold">Passion-Driven Mission</span>
@@ -171,7 +171,7 @@ export default function AboutMe() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.6 }}
-                        className="ml-4 italic text-gray-700 dark:text-gray-300 text-lg leading-relaxed"
+                        className="ml-8 italic text-gray-700 dark:text-gray-300 text-lg leading-relaxed"
                       >
                         As a youth mentor and consultant, I&apos;m deeply committed to empowering others to pursue life-changing education abroad.
                       </motion.p>
@@ -180,7 +180,7 @@ export default function AboutMe() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.7 }}
-                        className="flex items-center"
+                        className="flex items-center ml-8"
                       >
                         <span className="mr-2">✅</span>
                         <span className="font-bold">Strategic Support</span>
@@ -189,53 +189,60 @@ export default function AboutMe() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.7 }}
-                        className="ml-4 italic text-gray-700 dark:text-gray-300 text-lg leading-relaxed"
+                        className="ml-8 italic text-gray-700 dark:text-gray-300 text-lg leading-relaxed"
                       >
                         From finding the right scholarships to writing winning CVs and motivation letters, I offer practical, no-fluff guidance that gets results.
                       </motion.p>
                     </motion.div>
 
                     What You&apos;ll Find Here:
-                    <motion.p 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.7 }}
-                      className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-2"
-                    >
-                      🎓 Step-by-step scholarship application tutorials
-                    </motion.p>
-                    <motion.p 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.8 }}
-                      className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-2"
-                    >
-                      ✍ Templates and strategies for CVs and motivation letters
-                    </motion.p>
-                    <motion.p 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.9 }}
-                      className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-2"
-                    >
-                      🎥 Video walkthroughs and webinars
-                    </motion.p>
-                    <motion.p 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 1.0 }}
-                      className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-2"
-                    >
-                      📢 The latest updates on international opportunities
-                    </motion.p>
-                    <motion.p 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 1.1 }}
-                      className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-2"
-                    >
-                      🧭 Personal mentorship and expert tips
-                    </motion.p>
+                    <motion.div className="space-y-4">
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.8 }}
+                        className="flex items-center ml-6"
+                      >
+                        <span className="mr-2">🎓</span>
+                        <span className="font-bold">Step-by-step scholarship application tutorials</span>
+                      </motion.div>
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.9 }}
+                        className="flex items-center ml-6"
+                      >
+                        <span className="mr-2">✍</span>
+                        <span className="font-bold">Templates and strategies for CVs and motivation letters</span>
+                      </motion.div>
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 1.0 }}
+                        className="flex items-center ml-6"
+                      >
+                        <span className="mr-2">🎥</span>
+                        <span className="font-bold">Video walkthroughs and webinars</span>
+                      </motion.div>
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 1.1 }}
+                        className="flex items-center ml-6"
+                      >
+                        <span className="mr-2">📢</span>
+                        <span className="font-bold">The latest updates on international opportunities</span>
+                      </motion.div>
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 1.2 }}
+                        className="flex items-center ml-6"
+                      >
+                        <span className="mr-2">🧭</span>
+                        <span className="font-bold">Personal mentorship and expert tips</span>
+                      </motion.div>
+                    </motion.div>
                   </>
                 )}
               </motion.div>
