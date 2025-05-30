@@ -1,6 +1,7 @@
 'use client';
 
 import './globals.css';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Search,
@@ -8,6 +9,26 @@ import {
   Video,
   Banknote,
 } from 'lucide-react';
+
+// Remove unused FEATURES constant
+const features = [
+  {
+    title: 'Personalized Matches',
+    description: 'Get scholarship suggestions tailored to your profile.',
+  },
+  {
+    title: '1:1 Counseling',
+    description: 'Schedule consultations with our experts for guidance.',
+  },
+  {
+    title: 'Webinars & Resources',
+    description: 'Join events and access tools to boost your chances.',
+  },
+  {
+    title: 'Application Tracking',
+    description: 'Keep tabs on all your scholarship applications in one place.',
+  },
+];
 
 export default function Page() {
 
@@ -286,7 +307,7 @@ export default function Page() {
           {[
             { name: "Amina T.", text: "ScholarPath helped me find a full scholarship abroad! The counseling was amazing and I felt supported at every step." },
             { name: "David K.", text: "The webinar on application essays was a game-changer. I got accepted to 3 out of 5 universities I applied to!" },
-            { name: "Sarah M.", text: "The scholarship matching saved me so much time. I wouldn&apos;t have found these opportunities on my own." },
+            { name: "Sarah M.", text: "The scholarship matching saved me so much time. I wouldn't have found these opportunities on my own." },
           ].map((testimonial, i) => (
             <div key={i} className="bg-white dark:bg-gray-900 dark:bg-gray-800 rounded-2xl shadow-md p-8">
               <p className="text-gray-700 dark:text-gray-200 dark:text-gray-300 italic mb-4">&quot;{testimonial.text}&quot;</p>

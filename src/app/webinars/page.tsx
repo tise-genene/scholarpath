@@ -67,7 +67,7 @@ export default function WebinarPage() {
             Reserve My Spot
           </motion.button>
           <p className="text-gray-500 dark:text-gray-400 mt-4 text-sm">
-            Limited seats available — secure yours now before it&apos;s too late!
+            Limited seats available — secure yours now before it's too late!
           </p>
         </div>
       </motion.div>

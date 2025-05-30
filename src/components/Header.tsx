@@ -28,7 +28,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/">
           <span className="text-xl font-bold text-blue-600 dark:text-blue-400">
-            🎓 Tegegn&apos;s Pathway
+            🎓 Eagle Scholars
           </span>
         </Link>
 
