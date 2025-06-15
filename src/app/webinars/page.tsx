@@ -3,13 +3,41 @@
 import { motion } from "framer-motion";
 import { FaCalendarAlt, FaClock, FaVideo } from "react-icons/fa";
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
-import { webinars } from '@/data/webinars';
 import { WebinarCard } from '@/components/WebinarCard';
+import { useState, useEffect } from 'react';
+import { getWebinars } from '@/lib/api/webinars';
+import { Webinar } from '@/types/webinars';
 
 export default function WebinarPage() {
+  const [webinars, setWebinars] = useState<Webinar[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchWebinars = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const data = await getWebinars();
+        setWebinars(data);
+      } catch (err: any) {
+        setError(err.message || 'Failed to fetch webinars');
+        console.error('Error fetching webinars:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchWebinars();
+  }, []);
+
   return (
     <section className="min-h-screen w-full py-16 px-4 md:px-10 bg-white dark:bg-gray-900 relative overflow-hidden">
       {/* Soft Glows */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+        <div className="absolute -top-32 -left-32 w-64 h-64 bg-gradient-to-br from-purple-600/20 to-transparent rounded-full blur-3xl animate-float"></div>
+        <div className="absolute -bottom-32 -right-32 w-64 h-64 bg-gradient-to-br from-purple-400/20 to-transparent rounded-full blur-3xl animate-float-slow"></div>
+      </div>
       <div className="absolute top-10 left-10 w-40 h-40 bg-purple-300 opacity-30 rounded-full blur-2xl z-0" />
       <div className="absolute bottom-10 right-10 w-48 h-48 bg-blue-300 opacity-40 rounded-full blur-3xl z-0" />
 
@@ -88,11 +116,22 @@ export default function WebinarPage() {
           Stay ahead of the game with our lineup of expert-led sessions. Learn, grow, and unlock new opportunities!
         </p>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {webinars.map((webinar, idx) => (
-            <WebinarCard key={idx} webinar={webinar} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="text-center py-8">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600 mx-auto"></div>
+            <p className="mt-4 text-gray-600 dark:text-gray-400">Loading webinars...</p>
+          </div>
+        ) : error ? (
+          <div className="text-center py-8">
+            <p className="text-red-600 dark:text-red-400">{error}</p>
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-3 gap-8">
+            {webinars.filter(w => !w.isPast).map((webinar, idx) => (
+              <WebinarCard key={idx} webinar={webinar} />
+            ))}
+          </div>
+        )}
       </motion.div>
 
       {/* --- Soft Divider Line --- */}
@@ -112,65 +151,28 @@ export default function WebinarPage() {
         </p>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {/* Past Card 1 */}
-          <Card className="transition-transform hover:scale-105">
-  <CardHeader>
-    <CardTitle className="font-semibold text-purple-700 dark:text-purple-300 mb-2">
-      Scholarship Application Tips
-    </CardTitle>
-    <CardDescription className="mb-4 text-gray-800 dark:text-gray-100">
-      Replay our top strategies for acing scholarship applications and boosting your chances of standing out!
-    </CardDescription>
-  </CardHeader>
-  <CardFooter>
-    <a
-      href="#replay1"
-      className="bg-purple-600 text-white px-6 py-2 rounded-full mt-4 inline-block hover:bg-purple-700 w-full text-center"
-    >
-      Watch Replay
-    </a>
-  </CardFooter>
-</Card>
-
-          {/* Past Card 2 */}
-          <Card className="transition-transform hover:scale-105">
-  <CardHeader>
-    <CardTitle className="font-semibold text-purple-700 dark:text-purple-300 mb-2">
-      Writing a Winning CV
-    </CardTitle>
-    <CardDescription className="mb-4 text-gray-800 dark:text-gray-100">
-      Discover how to craft a CV that tells your unique story and leaves a lasting impression on review committees.
-    </CardDescription>
-  </CardHeader>
-  <CardFooter>
-    <a
-      href="#replay2"
-      className="bg-purple-600 text-white px-6 py-2 rounded-full mt-4 inline-block hover:bg-purple-700 w-full text-center"
-    >
-      Watch Replay
-    </a>
-  </CardFooter>
-</Card>
-
-          {/* Past Card 3 */}
-          <Card className="transition-transform hover:scale-105">
-  <CardHeader>
-    <CardTitle className="font-semibold text-purple-700 dark:text-purple-300 mb-2">
-      Choosing the Right Scholarship
-    </CardTitle>
-    <CardDescription className="mb-4 text-gray-800 dark:text-gray-100">
-      Replay and learn how to align your goals and strengths with the scholarships that fit you best.
-    </CardDescription>
-  </CardHeader>
-  <CardFooter>
-    <a
-      href="#replay3"
-      className="bg-purple-600 text-white px-6 py-2 rounded-full mt-4 inline-block hover:bg-purple-700 w-full text-center"
-    >
-      Watch Replay
-    </a>
-  </CardFooter>
-</Card>
+          {webinars.filter(w => w.isPast).map((webinar, idx) => (
+            <Card key={idx} className="transition-transform hover:scale-105">
+              <CardHeader>
+                <CardTitle className="font-semibold text-purple-700 dark:text-purple-300 mb-2">
+                  {webinar.title}
+                </CardTitle>
+                <CardDescription className="mb-4 text-gray-800 dark:text-gray-100">
+                  {webinar.description}
+                </CardDescription>
+              </CardHeader>
+              <CardFooter>
+                <a
+                  href={webinar.link}
+                  className="bg-purple-600 text-white px-6 py-2 rounded-full mt-4 inline-block hover:bg-purple-700 w-full text-center"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Watch Replay
+                </a>
+              </CardFooter>
+            </Card>
+          ))}
         </div>
       </motion.div>
 
@@ -185,5 +187,4 @@ export default function WebinarPage() {
         {/* Final CTA can be added here if you want */}
       </motion.div>
     </section>
-  );
-}
+  )}
