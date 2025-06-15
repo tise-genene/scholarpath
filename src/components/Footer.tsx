@@ -18,7 +18,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <h4 className="text-xl font-bold mb-3">Tegegn's Pathway</h4>
+          <h4 className="text-xl font-bold mb-3">Tegegn Pathway</h4>
           <p className="text-gray-200 dark:text-gray-300">Empowering your global education journey.</p>
           <div className="mt-4 space-y-1 text-gray-400 dark:text-gray-400 text-xs">
             <div>Tegegn From Verona, Italy</div>
@@ -76,7 +76,7 @@ export default function Footer() {
           <a href="/terms-and-conditions" className="hover:text-pink-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 transition">Terms & Conditions</a>
           <a href="/privacy-policy" className="hover:text-pink-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 transition">Privacy Policy</a>
         </div>
-        <p>&copy; {currentYear} <a href="https://t.me/Tegegnpathway" className="hover:text-pink-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 transition">Tegegn's Pathway</a>. All rights reserved.</p>
+        <p>&copy; {currentYear} <a href="https://t.me/Tegegnpathway" className="hover:text-pink-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 transition">Tegegn Pathway</a>. All rights reserved.</p>
       </div>
     </footer>
   );
