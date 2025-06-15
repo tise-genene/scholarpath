@@ -56,7 +56,11 @@ export default function ScholarshipsPage() {
       setScholarships(data);
     } catch (error: any) {
       console.error('Error fetching scholarships:', error);
-      setError(error.message || 'Failed to fetch scholarships');
+      if (error.message.includes('401')) {
+        setError('Authentication failed. Please check your Strapi API token.');
+      } else {
+        setError(error.message || 'Failed to fetch scholarships');
+      }
     } finally {
       setLoading(false);
     }
