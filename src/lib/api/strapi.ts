@@ -34,8 +34,8 @@ export async function getScholarships(): Promise<Scholarship[]> {
       amount: scholarship.Amount,
       country: scholarship.Country,
       level: scholarship.Level,
-      applyNow: scholarship.applyNow,
-      howToApply: scholarship.howToApply,
+      applyNow: scholarship.ApplyNow,
+      howToApply: scholarship.HowToApply,
     }));
   } catch (error) {
     console.error('Error fetching scholarships:', error);

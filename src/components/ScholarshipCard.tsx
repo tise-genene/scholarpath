@@ -3,7 +3,9 @@ import { Scholarship } from '@/types/scholarships';
 
 export function ScholarshipCard({ scholarship }: { scholarship: Scholarship }) {
   // Format description text with better spacing and typography
-  const formatDescription = (text: string) => {
+  const formatDescription = (text: string | null | undefined) => {
+    if (!text) return null;
+    
     // Split into sections based on common separators
     const sections = text.split(/\n|\n\n/).filter(Boolean);
     
@@ -27,7 +29,7 @@ export function ScholarshipCard({ scholarship }: { scholarship: Scholarship }) {
     });
   };
 
-  const formattedDescription = formatDescription(scholarship.description);
+  const formattedDescription = formatDescription(scholarship.description) || <p className="mb-2">No description available</p>;
 
   // Handle link opening with error handling
   const handleLinkClick = (url: string | undefined) => {
