@@ -7,15 +7,16 @@ import { Label } from '@/components/ui/label';
 import { registerForWebinar } from '@/lib/api/webinar-registration';
 import { useRouter } from 'next/navigation';
 import { WebinarRegistration } from '@/types/webinar-registration';
+import { WebinarRegistrationFormData } from '@/types/webinar-registration-form';
 
 export function WebinarRegistrationForm({ webinarId }: { webinarId: number }) {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<WebinarRegistrationFormData>({
     name: '',
     email: '',
     phone: '',
     country: '',
     institution: '',
-    academicLevel: ''
+    academicLevel: 'Undergraduate'
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -27,10 +28,14 @@ export function WebinarRegistrationForm({ webinarId }: { webinarId: number }) {
     setError(null);
 
     try {
-      await registerForWebinar({
+      // Cast academicLevel to the correct type
+      const registrationData: WebinarRegistration = {
         webinarId,
-        ...formData
-      });
+        ...formData,
+        academicLevel: formData.academicLevel as 'Undergraduate' | 'Graduate' | 'PhD' | 'Other'
+      };
+
+      await registerForWebinar(registrationData);
       
       // Redirect to success page
       router.push(`/webinars/${webinarId}/registered`);
@@ -45,7 +50,9 @@ export function WebinarRegistrationForm({ webinarId }: { webinarId: number }) {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: name === 'academicLevel' 
+        ? (value as 'Undergraduate' | 'Graduate' | 'PhD' | 'Other')
+        : value
     }));
   };
 
