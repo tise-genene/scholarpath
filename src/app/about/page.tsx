@@ -546,52 +546,6 @@ export default function AboutMe() {
           </div>
         </div>
       </section>
-      <section className="relative py-24 overflow-hidden bg-gradient-to-br from-blue-600 to-purple-600 dark:from-blue-900 dark:to-purple-900">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
-        </div>
-        
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
-              Ready to transform your future?
-            </h2>
-            <p className="text-xl text-blue-100 dark:text-blue-100 mb-10 max-w-2xl mx-auto">
-              Let's work together to find and secure the perfect scholarship opportunities tailored just for you.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="/contact" 
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-purple-700 hover:bg-gray-100 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
-              >
-                Get Started Today
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </a>
-              <a 
-                href="/services" 
-                className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white hover:bg-white/10 font-semibold rounded-full transition-all duration-300"
-              >
-                Learn More
-              </a>
-            </div>
-            <p className="mt-6 text-sm text-blue-100/80 dark:text-blue-200/80">
-              Schedule a free 30-minute consultation to discuss your goals
-            </p>
-          </motion.div>
-        </div>
-        
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-1/2 w-[500px] h-[500px] bg-purple-400/20 rounded-full -translate-x-1/2 -translate-y-1/3 blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-400/20 rounded-full translate-x-1/4 translate-y-1/4 blur-3xl"></div>
-      </section>
       
     </>
   );

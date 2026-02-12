@@ -5,4 +5,6 @@ export interface Scholarship {
   amount: number;
   country: string;
   level: string;
+  applyNow: string;
+  howToApply: string;
 }

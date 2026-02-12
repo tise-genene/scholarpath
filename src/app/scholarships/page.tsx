@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { Search } from "lucide-react";
-import { sampleScholarships } from '@/data/scholarships';
 import { ScholarshipCard } from '@/components/ScholarshipCard';
+import { getScholarships } from '@/lib/api/strapi';
+import { Scholarship } from '@/types/scholarships';
 import Image from 'next/image';
 
 const containerVariants = {
@@ -41,7 +42,38 @@ export default function ScholarshipsPage() {
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
 
-  const filteredScholarships = sampleScholarships.filter((scholarship) => {
+  const [scholarships, setScholarships] = useState<Scholarship[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
+  const maxRetries = 3;
+
+  const fetchScholarships = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await getScholarships();
+      setScholarships(data);
+    } catch (error: any) {
+      console.error('Error fetching scholarships:', error);
+      setScholarships([]); // This will be populated with sample data from API
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchScholarships();
+  }, []);
+
+  const handleRetry = () => {
+    if (retryCount < maxRetries) {
+      setRetryCount(prev => prev + 1);
+      fetchScholarships();
+    }
+  };
+
+  const filteredScholarships = scholarships.filter((scholarship) => {
     const matchesSearch = scholarship.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                        scholarship.description.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesLevel = !filters.level || scholarship.level === filters.level;
@@ -145,9 +177,31 @@ export default function ScholarshipsPage() {
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 w-full">
-            {filteredScholarships.map((scholarship, index) => (
-              <ScholarshipCard key={index} scholarship={scholarship} />
-            ))}
+            {error ? (
+              <div className="col-span-3 text-center py-12">
+                <p className="text-red-600 dark:text-red-400">{error}</p>
+                <button
+                  onClick={handleRetry}
+                  className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                  disabled={retryCount >= maxRetries}
+                >
+                  {retryCount >= maxRetries ? 'Max retries reached' : 'Retry'}
+                </button>
+              </div>
+            ) : loading ? (
+              <div className="col-span-3 text-center py-12">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto"></div>
+                <p className="mt-4 text-gray-600 dark:text-gray-400">Loading scholarships...</p>
+              </div>
+            ) : filteredScholarships.length === 0 ? (
+              <div className="col-span-3 text-center py-12">
+                <p className="text-gray-600 dark:text-gray-400">No scholarships found matching your criteria.</p>
+              </div>
+            ) : (
+              filteredScholarships.map((scholarship, index) => (
+                <ScholarshipCard key={index} scholarship={scholarship} />
+              ))
+            )}
           </div>
         </div>
       </section>
@@ -239,19 +293,19 @@ export default function ScholarshipsPage() {
                 name: "Liya from Ethiopia",
                 quote: "Thanks to the support I received, I secured a fully funded scholarship in Germany!",
                 country: "Germany",
-                image: "/students/liya.jpg",
+                image: "/tegegn.jpg",
               },
               {
                 name: "Samuel from Kenya",
                 quote: "This platform gave me the tools and confidence to apply abroad — now I'm studying in the UK.",
                 country: "UK",
-                image: "/students/samuel.jpg",
+                image: "/tegegn.jpg",
               },
               {
                 name: "Fatima from Nigeria",
                 quote: "I was guided every step of the way — from essays to interviews. I got a scholarship in Canada!",
                 country: "Canada",
-                image: "/students/fatima.jpg",
+                image: "/tegegn.jpg",
               },
             ].map((story, index) => (
               <motion.div
